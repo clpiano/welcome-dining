@@ -1,4 +1,4 @@
-# <welcome-dining >
+# welcome-dining
 
 ## サイト概要
 ### サイトテーマ
@@ -20,3 +20,4 @@
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
+
