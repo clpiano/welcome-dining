@@ -1,0 +1,35 @@
+<div class="container">
+  <h5>新規投稿</h5>
+  <div class="row justify-content-center">
+    <%= form_with model: @post, url: restaurant_posts_path do |f| %>
+      <div class="form-group row">
+        <%= f.label :Text %>
+        <%= f.text_area :content, class:"form-control " %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :ホームページ %>
+        <%= f.text_field :home_page, class:"form-control" %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :写真, class:"mr-3" %>
+        <%= f.file_field :image %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :業態, class:"" %>
+        <%#= f.select :category, [[カフェ,0], [和食,1], [洋食,2], [中華,3], [アジア・エスニック,4], [イタリアン,5], [カレー,6], [居酒屋・バー,7],[その他,8]] %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :予約ステータス, class:"mr-3" %>
+        <%= form_with model: @post, url: restaurant_posts_path do |form| %>
+          <%= form.radio_button :reservation_status, :true, checked: true %>
+          <%= f.label :reservation_status, "予約受付中", class:"mr-3" %>
+          <%= form.radio_button :reservation_status, :false %>
+          <%= f.label :reservation_status, "予約不可" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "投稿", class:"btn btn-success" %>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

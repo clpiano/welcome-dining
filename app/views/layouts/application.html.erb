@@ -6,11 +6,22 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header style="background-color:orange;">
+      <% if customer_signed_in? %>
+        <%= render 'layouts/customer-header' %><%#顧客用ヘッダー%>
+      <% elsif restaurant_signed_in? %>
+        <%= render 'layouts/restaurant-header' %><%#飲食店用ヘッダー%>
+      <% else %>
+        <%= render 'layouts/logout-header' %><%#ログアウト用ヘッダー%>
+      <% end %>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

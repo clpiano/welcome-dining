@@ -1,0 +1,54 @@
+<div class="container">
+  <h5 class="m-4">会員新規登録</h5>
+  <div class="row justify-content-center">
+    <%= form_with model: @customer, url: customer_registration_path do |f| %>
+      <%= render "public/shared/error_messages", resource: resource %>
+
+        <div class="form-group row">
+          <%= f.label :姓, class:"col-sm-2 text-right" %>
+          <%= f.text_field :last_name, class:"col-sm-4 form-control", placeholder:""%>
+
+          <%= f.label :名, class:"col-sm-2 text-right" %>
+          <%= f.text_field :first_name, class:"col-sm-4 form-control" %>
+        </div>
+        <div class="form-group row">
+          <%= f.label :郵便番号, class:"col-sm-5 text-right" %>
+          <%= f.text_field :zipcode, class:"col-sm-7 form-control", placeholder:"0000000" %>
+        </div>
+        <div class="form-group row">
+          <%= f.label :住所, class:"col-sm-5 text-right" %>
+          <%= f.text_field :address, class:"col-sm-7 form-control", placeholder:"東京都○○区○○町0-0" %>
+        </div>
+        <div class="form-group row">
+          <%= f.label :電話番号, class:"col-sm-5 text-right" %>
+          <%= f.text_field :phone_number, class:"col-sm-7 form-control", placeholder:"0000000000" %>
+        </div>
+        <div class="form-group row">
+          <%= f.label :メールアドレス, class:"col-sm-5 text-right" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-sm-7 form-control" %>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label :パスワード, class:"col-sm-5 text-right" %>
+          <%= f.password_field :password, autocomplete: "new-password", class:"col-sm-7 form-control", placeholder:"6文字以上" %>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label :再入力, class:"col-sm-5 text-right"%>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"col-sm-7 form-control", placeholder:"6文字以上" %>
+        </div>
+
+        <div class="form-group">
+          <%#= f.label :店の写真 %>
+          <%#= f.file_field :image %>
+        </div>
+
+        <div class="actions text-center">
+          <%= f.submit "新規登録", class:"btn btn-success" %>
+        </div>
+    <% end %>
+  </div>
+  <div class="row justify-content-center m-2">
+    <p>新規登録がお済みの場合は<%= link_to "こちら", customer_session_path %></p>
+  </div>
+</div>
