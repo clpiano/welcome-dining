@@ -1,2 +1,17 @@
-<h1>Restaurant::Posts#show</h1>
-<p>Find me in app/views/restaurant/posts/show.html.erb</p>
+<div class="container">
+  <h5 class="m-3">投稿詳細画面</h5>
+  <div class="row justify-content-center">
+    <div class="card" style="width: 20rem;">
+      <% if @post.image.attached? %>
+        <%= image_tag @post.image, size: "250x200", class:"card-img-top" %>
+      <% end %>
+      <div class="card-body">
+        <%= @post.content %>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <%= link_to "編集する", edit_restaurant_post_path(@post), class:"btn btn-success m-3" %>
+    <%= link_to "削除する", restaurant_post_path(@post), method: :delete, class:"btn btn-danger m-3" %>
+  </div>
+</div>

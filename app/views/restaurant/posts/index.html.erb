@@ -1,2 +1,6 @@
 <h1>Restaurant::Posts#index</h1>
-<p>Find me in app/views/restaurant/posts/index.html.erb</p>
+<% @posts.each do |post| %>
+<%= post.id %>
+<%= post.content %>
+<%= post.reservation_status %>
+<% end %>
