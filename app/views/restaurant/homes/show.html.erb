@@ -1,1 +1,41 @@
-<h5>飲食店マイページ</h5>
+<div class="container">
+  <h5 class="m-3">飲食店マイページ</h5>
+  <div class="row justify-content-center m-3">
+    <div class="col-sm-4 mb-3">
+      <% if @restaurant.image.attached? %>
+        <%= image_tag @restaurant.image, size: "320x320" %>
+      <% end %>
+    </div>
+    <table class="table col-sm-10">
+      <tr>
+        <th>店舗名</th>
+        <td><%= @restaurant.name %></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td>〒<%= @restaurant.zipcode %><br>
+          <%= @restaurant.address %>
+        </td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= @restaurant.phone_number %></td>
+      </tr>
+      <tr>
+        <th>ホームページ</th>
+        <td><%= Rinku.auto_link(@restaurant.home_page, :all, 'target="_blank"').html_safe %></td>
+      </tr>
+      <tr>
+        <th>営業時間</th>
+        <td><%= @restaurant.business_hours %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @restaurant.email %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="row justify-content-center">
+    <%= link_to "編集する", edit_restaurant_registration_path(@restaurant), class:"btn btn-success" %>
+  </div>
+</div>

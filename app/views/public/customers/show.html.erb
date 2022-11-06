@@ -1,0 +1,29 @@
+<div class="container">
+  <h5 class="m-3">会員マイページ</h5>
+    <table class="table row justify-content-center">
+      <tr>
+        <th>氏名</th>
+        <td><%= @customer.last_name %><%= @customer.first_name %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @customer.email %></td>
+      </tr>
+      <tr>
+        <th>郵便番号</th>
+        <td>〒<%= @customer.zipcode %></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= @customer.address %></td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= @customer.phone_number %></td>
+      </tr>
+    </table>
+    <div class="row justify-content-center">
+      <%= link_to "編集する", edit_information_path, class:"btn btn-success" %>
+    </div>
+  </div>
+</div>

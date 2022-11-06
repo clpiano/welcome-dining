@@ -59,4 +59,16 @@ class Restaurant::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  
+  def update
+    @restaurant = current_restaurant
+    @restaurant.update(restaurant_params)
+    redirect_to restaurant_posts_path
+  end
+  
+  private
+
+  def restaurant_params
+    params.require(:restaurant).permit(:id, :name, :zipcode, :address, :phone_number, :home_page, :business_hours)
+  end
 end
