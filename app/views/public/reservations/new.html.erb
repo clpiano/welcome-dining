@@ -1,0 +1,45 @@
+<div class="container">
+  <h5>新規予約</h5>
+  <div class="row justify-content-center m-3">
+    <%= form_with model: @reservation, url:restaurant_reservations_path do |f| %>
+    <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
+    <%= f.hidden_field :customer_id, :value => current_customer.id %>
+      <table class="table-borderless">
+        <tr>
+          <th>予約するお店</th>
+          <td><%= @restaurant.name %></td>
+        </tr>
+        <tr>
+          <th class="col">氏名</th>
+          <td><%= current_customer.last_name %><%= current_customer.first_name %></td>
+        </tr>
+        <tr>
+          <th class="col">メールアドレス</th>
+          <td><%= current_customer.email %></td>
+        </tr>
+        <tr>
+          <th class="col">電話番号</th>
+          <td><%= current_customer.phone_number %></td>
+        </tr>
+        <tr>
+          <th class="col">予約人数</th>
+          <td><%= f.select :number_of_people, [["1",1], ["2",2]] %>名</td>
+        </tr>
+        <tr>
+          <th class="col">予約時間</th>
+          <td>
+            <%= Date.current.strftime('%Y/%m/%d') %><br>
+            <%= f.select :reservation_time, [["1",1], ["2",2]] %>
+          </td>
+        </tr>
+        <tr>
+          <th class="col">備考</th>
+          <td><%= f.text_field :note, class:"form-control" %></td>
+        </tr>
+      </table>
+      <div class="row justify-content-center">
+        <%= f.submit "送信する", class:"btn btn-success m-3" %>
+      </div>
+    <% end %>
+  </div>
+</div>

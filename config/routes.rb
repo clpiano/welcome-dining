@@ -18,8 +18,9 @@ Rails.application.routes.draw do
     get 'customers/information/edit' => 'customers#edit', as: 'edit_information'
     patch 'customers/information' => 'customers#update', as: 'update_information'
     resources :customers, only: [:show, :edit, :update]
-    resources :reservations
-    resources :restaurants, only: [:index, :show]
+    resources :restaurants, only: [:index, :show] do
+      resources :reservations
+    end
   end
   #飲食店用
   namespace :restaurant do

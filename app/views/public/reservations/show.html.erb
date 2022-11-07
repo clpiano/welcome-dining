@@ -1,0 +1,27 @@
+<div class="container">
+  <h5>予約詳細</h5>
+  <div class="row justify-content-center">
+    <table class="table-borderless">
+      <tr>
+        <th class="col">氏名</th>
+        <td><%= current_customer.last_name %><%= current_customer.first_name %></td>
+      </tr>
+      <tr>
+        <th class="col">メールアドレス</th>
+        <td><%= current_customer.email %></td>
+      </tr>
+      <tr>
+        <th class="col">電話番号</th>
+        <td><%= current_customer.phone_number %></td>
+      </tr>
+      <tr>
+        <th class="col">予約人数</th>
+        <td><%= @reservation.number_of_people %></td>
+      </tr>
+      <tr>
+        <th class="col">予約時間</th>
+        <td><%= @reservation.reservation_time %></td>
+      </tr>
+    </table>
+  </div>
+</div>

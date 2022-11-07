@@ -1,12 +1,12 @@
 class Public::PostsController < ApplicationController
-
+  #会員用投稿一覧
   def index
     @posts = Post.all
     @posts = Post.all.order(created_at: :desc)
   end
-
+  #会員用詳細ページ
   def show
-    @post = Post.find(post_params)
+    @post = Post.find(params[:id])
   end
 
   private

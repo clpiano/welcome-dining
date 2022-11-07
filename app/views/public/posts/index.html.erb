@@ -15,9 +15,15 @@
             <%= simple_format(post.content) %>
             <%#リンク%>
             <%= Rinku.auto_link(post.home_page, :all, 'target="_blank"').html_safe %>
+            <%#予約ステータス%>
+            <% if post.reservation_status == true %>
+              <p class="text-success text-center">予約受付中</p>
+            <% else %>
+              <p class="text-muted text-center">予約停止中</p>
+            <% end %>
           </div>
           <font class="text-center" size="2">
-            <%= link_to "詳細へ", restaurant_post_path(post) %>
+            <%= link_to "詳細へ", post_path(post) %>
           </font>
           <font class="text-right" size="2">
             <%#投稿日時%>

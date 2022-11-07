@@ -7,5 +7,5 @@ class Restaurant < ApplicationRecord
   has_one_attached :image
   
   has_many :posts, dependent: :destroy
-  
+  has_many :reservations
 end

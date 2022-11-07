@@ -1,0 +1,30 @@
+<div class="container">
+  <h5 class="m-3">投稿詳細画面</h5>
+  <div class="row justify-content-center">
+    <div class="card" style="width: 20rem;">
+      <%#写真があれば表示%>
+      <% if @post.image.attached? %>
+        <%= image_tag @post.image, size: "250x200", class:"card-img-top" %>
+      <% end %>
+
+      <div class="card-body">
+        <%#店舗名%>
+        <h5><%= @post.restaurant.name %></h5>
+        <%#投稿内容%>
+        <%= simple_format(@post.content) %>
+        <%= Rinku.auto_link(@post.home_page, :all, 'target="_blank"').html_safe %>
+
+      </div>
+      <font class="text-right" size="2">
+        <%= @post.created_at.strftime('%Y/%m/%d %H:%M') %>
+      </font>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <% if @post.reservation_status == true %>
+      <%= link_to "予約画面へ", new_restaurant_reservation_path(@post.restaurant), class:"btn btn-success m-3" %>
+    <% else %>
+      <p class="text-muted text-center m-3">予約停止中</p>
+    <% end %>
+  </div>
+</div>
