@@ -4,9 +4,8 @@ class CreateReservations < ActiveRecord::Migration[6.1]
 
       t.integer :restaurant_id,    null: false
       t.integer :customer_id,      null: false
-      t.integer :post_id
       t.integer :number_of_people, null: false
-      t.string :reservation_time, null: false
+      t.datetime :reservation_time, null: false
       t.text :note
       t.integer :approval_status
       t.timestamps

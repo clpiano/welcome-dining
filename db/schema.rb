@@ -59,7 +59,6 @@ ActiveRecord::Schema.define(version: 2022_11_04_041909) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "restaurant_id", null: false
-    t.integer "reservation"
     t.text "content", null: false
     t.string "home_page"
     t.string "category", null: false
@@ -71,9 +70,8 @@ ActiveRecord::Schema.define(version: 2022_11_04_041909) do
   create_table "reservations", force: :cascade do |t|
     t.integer "restaurant_id", null: false
     t.integer "customer_id", null: false
-    t.integer "post_id"
     t.integer "number_of_people", null: false
-    t.string "reservation_time", null: false
+    t.datetime "reservation_time", null: false
     t.text "note"
     t.integer "approval_status"
     t.datetime "created_at", precision: 6, null: false

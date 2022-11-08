@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     patch 'customers/information' => 'customers#update', as: 'update_information'
     resources :customers, only: [:show, :edit, :update]
     resources :restaurants, only: [:index, :show] do
-      resources :reservations
+      resources :reservations, only: [:new, :create, :show, :index, :destroy]
     end
   end
   #飲食店用
@@ -27,7 +27,8 @@ Rails.application.routes.draw do
     root to: 'homes#show'
     resources :homes, only: [:show]
     resources :posts
-    resources :reservations, only: [:index, :show, :create]
+    resources :reservations, only: [:show, :create]
+    get 'reservations' => 'reservations#index', as: 'reserve'
     resources :customers
   end
 end

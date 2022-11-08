@@ -1,18 +1,14 @@
 class Public::ReservationsController < ApplicationController
 
   def new
-    #@customer = current_customer.id
     @restaurant = Restaurant.find(params[:restaurant_id])
     @reservation = Reservation.new
   end
 
   def create
-    @reservation = Reservation.new(reservation_params)
-    
-    @reservation.customer_id = current_customer.id
-
+    @reservation = current_customer.reservations.new(reservation_params)
     @reservation.save
-    redirect_to restaurant_reservation_path(@reservation)
+    redirect_to restaurant_reservation_path(@reservation.restaurant, @reservation)
   end
 
   def show
@@ -20,6 +16,7 @@ class Public::ReservationsController < ApplicationController
   end
 
   def index
+    @reservations = Reservation.all
   end
 
   def edit
@@ -34,6 +31,6 @@ class Public::ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:customer_id, :restaurant_id, :number_of_people, :reservation_time, :note)
+    params.require(:reservation).permit(:customer_id, :restaurant_id, :number_of_people, :reservation_time, :note, :approval_status)
   end
 end

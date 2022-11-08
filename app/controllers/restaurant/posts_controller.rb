@@ -12,8 +12,8 @@ class Restaurant::PostsController < ApplicationController
   end
   #投稿一覧画面
   def index
-    @posts = Post.all
-    @posts = Post.all.order(created_at: :desc)
+    #@posts = current_restaurant.posts.all
+    @posts = current_restaurant.posts.all.order(created_at: :desc)
   end
   #投稿詳細画面
   def show

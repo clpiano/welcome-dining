@@ -1,27 +1,26 @@
 <div class="container">
-  <h5>予約詳細</h5>
+  <h5>飲食店側予約詳細</h5>
   <div class="row justify-content-center">
     <table class="table-borderless">
       <tr>
         <th class="col">氏名</th>
-        <td><%= current_customer.last_name %><%= current_customer.first_name %></td>
+        <td><%= @reservation.customer.last_name %><%= @reservation.customer.first_name %></td>
       </tr>
       <tr>
         <th class="col">メールアドレス</th>
-        <td><%= current_customer.email %></td>
+        <td><%= @reservation.customer.email %></td>
       </tr>
       <tr>
         <th class="col">電話番号</th>
-        <td><%= current_customer.phone_number %></td>
+        <td><%= @reservation.customer.phone_number %></td>
       </tr>
       <tr>
         <th class="col">予約人数</th>
-        <td><%= @reservation.number_of_people %></td>
+        <td><%= @reservation.number_of_people %>名</td>
       </tr>
       <tr>
         <th class="col">予約時間</th>
         <td><%= @reservation.reservation_time.strftime('%Y/%m/%d %H:%M') %></td>
-        <%#= @reservation.created_at.strftime('%Y/%m/%d %H:%M') %>
       </tr>
     </table>
   </div>
