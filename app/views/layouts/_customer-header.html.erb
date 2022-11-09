@@ -10,7 +10,7 @@
             <%= link_to '投稿一覧', posts_path,class: "btn btn-sm btn-dark" %>
           </li>
           <li class="nav-item mr-2">
-            <%#= link_to '注文履歴一覧',admin_root_path,class: "btn btn-sm btn-dark" %>
+            <%= link_to '予約一覧', reservations_path, class: "btn btn-sm btn-dark" %>
           </li>
           <li class="nav-item mr-2">
             <%#= link_to 'ジャンル一覧', admin_genres_path,class: "btn btn-sm btn-dark" %>
@@ -22,3 +22,10 @@
     </div>
   </div>
 </nav>
+<div class="suv-nav text-center">
+  <%#ログイン中の会員名 %>
+  <div class="login customer_name ml-auto" style="color:#ffffff;">
+    <%= current_customer.last_name %>
+    <%= current_customer.first_name %>さん
+  </div>
+</div>

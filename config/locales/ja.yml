@@ -1,0 +1,7 @@
+ja:
+  enums:
+    reservation:
+      approval_status:
+        unapproved: "未承認"
+        approved: "承認済"
+        impossible: "不可"

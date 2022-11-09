@@ -19,16 +19,22 @@ Rails.application.routes.draw do
     patch 'customers/information' => 'customers#update', as: 'update_information'
     resources :customers, only: [:show, :edit, :update]
     resources :restaurants, only: [:index, :show] do
-      resources :reservations, only: [:new, :create, :show, :index, :destroy]
+      resources :reservations, only: [:new, :create, :show]
+      delete 'reservations/:id' => 'reservations#destroy', as: 'destroy_reservations'
     end
+    get 'reservations' => 'reservations#index', as: 'reservations'
+
   end
   #飲食店用
   namespace :restaurant do
     root to: 'homes#show'
     resources :homes, only: [:show]
     resources :posts
-    resources :reservations, only: [:show, :create]
+    #resources :reservations, only: [:update]
     get 'reservations' => 'reservations#index', as: 'reserve'
+    get 'reservation/:id' => 'reservations#show', as: 'reserve_detail'
+    get 'reservation/:id/edit' => 'reservations#edit', as: 'edit_reservation'
+    patch 'reservation/:id' => 'reservations#update', as: 'update_reservation'
     resources :customers
   end
 end

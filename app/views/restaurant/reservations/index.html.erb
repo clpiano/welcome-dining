@@ -6,6 +6,7 @@
         <th>氏名</th>
         <th>予約人数</th>
         <th>予約時間</th>
+        <th>ステータス</th>
         <th>詳細</th>
       </thead>
       <% @reservations.each do |reservation| %>
@@ -16,7 +17,12 @@
         </td>
         <td><%= reservation.number_of_people %></td>
         <td><%= reservation.reservation_time.strftime('%Y/%m/%d %H:%M') %></td>
-        <td><%= link_to "詳細", restaurant_reservation_path(reservation.restaurant, reservation) %></td>
+        <td>
+          <%= link_to restaurant_edit_reservation_path(reservation) do %>
+            <%= reservation.approval_status_i18n %>
+          <% end %>
+        </td>
+        <td><%= link_to "詳細", restaurant_reserve_detail_path(reservation) %></td>
       </tbody>
     <% end %>
     </table>

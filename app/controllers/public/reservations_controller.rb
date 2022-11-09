@@ -12,11 +12,11 @@ class Public::ReservationsController < ApplicationController
   end
 
   def show
-    @reservation = Reservation.find(params[:id])
+    @reservation = current_customer.reservations.find(params[:id])
   end
 
   def index
-    @reservations = Reservation.all
+    @reservations = current_customer.reservations.all
   end
 
   def edit
@@ -26,6 +26,9 @@ class Public::ReservationsController < ApplicationController
   end
 
   def destroy
+    @reservation = current_customer.reservations.find(params[:id])
+    @reservation.destroy
+    redirect_to reservations_path
   end
 
   private
