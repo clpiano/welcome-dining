@@ -30,10 +30,9 @@ Rails.application.routes.draw do
     root to: 'homes#show'
     resources :homes, only: [:show]
     resources :posts
-    #resources :reservations, only: [:update]
     get 'reservations' => 'reservations#index', as: 'reserve'
     get 'reservation/:id' => 'reservations#show', as: 'reserve_detail'
-    get 'reservation/:id/edit' => 'reservations#edit', as: 'edit_reservation'
+    #get 'reservation/:id/edit' => 'reservations#edit', as: 'edit_reservation'
     patch 'reservation/:id' => 'reservations#update', as: 'update_reservation'
     resources :customers
   end

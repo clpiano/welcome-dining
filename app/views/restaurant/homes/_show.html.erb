@@ -1,0 +1,30 @@
+<tr>
+  <th>店舗名</th>
+  <td><%= restaurant.name %></td>
+</tr>
+<tr>
+  <th>住所</th>
+  <td>〒<%= restaurant.zipcode %><br>
+      <%= restaurant.address %>
+  </td>
+</tr>
+<tr>
+  <th>TEL</th>
+  <td><%= restaurant.phone_number %></td>
+</tr>
+<tr>
+  <th>URL</th>
+  <td><%= Rinku.auto_link(restaurant.home_page, :all, 'target="_blank"').html_safe %></td>
+</tr>
+<tr>
+  <th>営業時間</th>
+  <td><%= restaurant.business_hours %></td>
+</tr>
+<tr>
+  <th>定休日</th>
+  <td><%= restaurant.regular_holiday %></td>
+</tr>
+<tr>
+  <th>E-mail</th>
+  <td><%= restaurant.email %></td>
+</tr>

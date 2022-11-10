@@ -6,11 +6,11 @@
 
     <div class="form-group row">
       <%= f.label :店舗名, class:"col-sm-5 text-right" %>
-      <%= f.text_field :name, class:"col-sm-7 form-control", placeholder:"店舗名を入力して下さい"%>
+      <%= f.text_field :name, class:"col-sm-7 form-control" %>
     </div>
 
     <div class="form-group row">
-      <%= f.label :郵便番号, class:"col-sm-5 text-right" %>
+      <%= f.label :〒, class:"col-sm-5 text-right" %>
       <%= f.text_field :zipcode, class:"col-sm-7 form-control", placeholder:"0000000" %>
     </div>
 
@@ -20,12 +20,12 @@
     </div>
 
     <div class="form-group row">
-      <%= f.label :電話番号, class:"col-sm-5 text-right" %>
+      <%= f.label :TEL,"TEL", class:"col-sm-5 text-right" %>
       <%= f.text_field :phone_number, class:"col-sm-7 form-control", placeholder:"0000000000" %>
     </div>
 
     <div class="form-group row">
-      <%= f.label :ホームページ, class:"col-sm-5 text-right" %>
+      <%= f.label :Webサイト, class:"col-sm-5 text-right" %>
       <%= f.text_field :home_page, class:"col-sm-7 form-control", placeholder: "リンクをはって下さい" %>
     </div>
 
@@ -34,19 +34,24 @@
       <%= f.text_field :business_hours, class:"col-sm-7 form-control" %>
     </div>
 
-    <div class="form-group row content-right">
-      <%= f.label :お店の写真 %>
-      <%= f.file_field :image %>
+    <div class="form-group row">
+      <%= f.label :定休日, class:"col-sm-5 text-right" %>
+      <%= f.text_field :regular_holiday, class:"col-sm-7 form-control" %>
     </div>
 
     <div class="form-group row">
-      <%= f.label :メールアドレス, class:"col-sm-5 text-right" %>
+      <%= f.label :"E-mail", class:"col-sm-5 text-right" %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-sm-7 form-control" %>
     </div>
 
     <div class="form-group row">
       <%= f.label :パスワード, class:"col-sm-5 text-right" %>
       <%= f.password_field :current_password, autofocus: true, placeholder:"現在のパスワードを入力", class:"col-sm-7 form-control" %>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :お店の写真 %>
+      <%= f.file_field :image %>
     </div>
 
     <div class="actions text-center">

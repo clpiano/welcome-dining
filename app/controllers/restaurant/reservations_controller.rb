@@ -1,16 +1,17 @@
 class Restaurant::ReservationsController < ApplicationController
 
   def index
-    @reservations = current_restaurant.reservations.all
+    @reservations = current_restaurant.reservations.all.order(reservation_time: "DESC")
+    @reservations = current_restaurant.reservations.all.page(params[:page]).per(10)
   end
 
   def show
     @reservation = current_restaurant.reservations.find(params[:id])
   end
 
-  def edit
-    @reservation = current_restaurant.reservations.find(params[:id])
-  end
+  #def edit
+   # @reservation = current_restaurant.reservations.find(params[:id])
+  #end
 
   def update
     @reservation = current_restaurant.reservations.find(params[:id])

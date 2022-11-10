@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     case resource
     when Restaurant
-      new_restaurant_post_path#(仮)
+      restaurant_reserve_path#(仮)
     when Customer
       root_path
     end

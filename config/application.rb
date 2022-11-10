@@ -18,7 +18,9 @@ module WelcomeDining
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
+    #データベースのデータを日本の現在時刻にする設定
+    config.time_zone = "Asia/Tokyo"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.active_record.default_timezone = :local
   end
 end

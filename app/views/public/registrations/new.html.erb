@@ -12,7 +12,7 @@
           <%= f.text_field :first_name, class:"col-sm-4 form-control" %>
         </div>
         <div class="form-group row">
-          <%= f.label :郵便番号, class:"col-sm-5 text-right" %>
+          <%= f.label :〒, class:"col-sm-5 text-right" %>
           <%= f.text_field :zipcode, class:"col-sm-7 form-control", placeholder:"0000000" %>
         </div>
         <div class="form-group row">
@@ -20,11 +20,11 @@
           <%= f.text_field :address, class:"col-sm-7 form-control", placeholder:"東京都○○区○○町0-0" %>
         </div>
         <div class="form-group row">
-          <%= f.label :電話番号, class:"col-sm-5 text-right" %>
+          <%= f.label :TEL,"TEL", class:"col-sm-5 text-right" %>
           <%= f.text_field :phone_number, class:"col-sm-7 form-control", placeholder:"0000000000" %>
         </div>
         <div class="form-group row">
-          <%= f.label :メールアドレス, class:"col-sm-5 text-right" %>
+          <%= f.label :"E-mail", class:"col-sm-5 text-right" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-sm-7 form-control" %>
         </div>
 

@@ -1,5 +1,5 @@
 <div class="container">
-  <h5>予約一覧</h5>
+  <h5 class="m-3">飲食店予約一覧</h5>
   <div class="row">
     <table class="table">
       <thead>
@@ -17,14 +17,13 @@
         </td>
         <td><%= reservation.number_of_people %></td>
         <td><%= reservation.reservation_time.strftime('%Y/%m/%d %H:%M') %></td>
-        <td>
-          <%= link_to restaurant_edit_reservation_path(reservation) do %>
-            <%= reservation.approval_status_i18n %>
-          <% end %>
-        </td>
+        <td><%= reservation.approval_status_i18n %></td>
         <td><%= link_to "詳細", restaurant_reserve_detail_path(reservation) %></td>
       </tbody>
     <% end %>
     </table>
+  </div>
+  <div class="row justify-content-center mb-5">
+    <%= paginate @reservations, theme: 'twitter-bootstrap-4' %>
   </div>
 </div>

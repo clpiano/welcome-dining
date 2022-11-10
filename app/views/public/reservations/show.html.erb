@@ -3,15 +3,19 @@
   <div class="row justify-content-center">
     <table class="table-borderless m-5">
       <tr>
+        <th class="col">予約したお店</th>
+        <td><%= @reservation.restaurant.name %></td>
+      </tr>
+      <tr>
         <th class="col">氏名</th>
         <td><%= current_customer.last_name %><%= current_customer.first_name %></td>
       </tr>
       <tr>
-        <th class="col">メールアドレス</th>
+        <th class="col">E-mail</th>
         <td><%= current_customer.email %></td>
       </tr>
       <tr>
-        <th class="col">電話番号</th>
+        <th class="col">TEL</th>
         <td><%= current_customer.phone_number %></td>
       </tr>
       <tr>
@@ -29,11 +33,14 @@
     </table>
   </div>
   <div class="row justify-content-center">
-    <%#承認ステータスが未承認の場合のみキャンセルボタン表示%>
+    <%#承認ステータスが未承認の場合%>
     <% if @reservation.approval_status == "unapproved" %>
       <%= link_to "キャンセルする", restaurant_destroy_reservations_path(@reservation.id), method: :delete, "data-confirm" => "本当にキャンセルしますか？", class:"btn btn-danger" %>
+    <%#承認ステータスが不可の場合%>
     <% elsif @reservation.approval_status == "impossible" %>
       <p>申し訳ございません。予約をお受けすることができませんでした。</p>
+    <% else %>
+      <p>ご予約ありがとうございます。ご来店をお待ちしております。</p>
     <% end %>
   </div>
 </div>

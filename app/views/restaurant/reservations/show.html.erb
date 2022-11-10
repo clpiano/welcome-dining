@@ -3,15 +3,15 @@
   <div class="row justify-content-center">
     <table class="table-borderless m-5">
       <tr>
-        <th class="col">氏名</th>
+        <th class="col">お客様名</th>
         <td><%= @reservation.customer.last_name %><%= @reservation.customer.first_name %></td>
       </tr>
       <tr>
-        <th class="col">メールアドレス</th>
+        <th class="col">E-mail</th>
         <td><%= @reservation.customer.email %></td>
       </tr>
       <tr>
-        <th class="col">電話番号</th>
+        <th class="col">TEL</th>
         <td><%= @reservation.customer.phone_number %></td>
       </tr>
       <tr>
@@ -22,7 +22,35 @@
         <th class="col">予約時間</th>
         <td><%= @reservation.reservation_time.strftime('%Y/%m/%d %H:%M') %></td>
       </tr>
+      <tr>
+        <th class="col">備考</th>
+        <td><%= @reservation.note %></td>
+      </tr>
+      <tr>
+        <th class="col">ステータス</th>
+        <td><%= @reservation.approval_status_i18n %></td>
+      </tr>
     </table>
   </div>
 
+  <div class="row justify-content-center">
+    <%#未承認の場合ラジオボタンで承認or拒否を選択%>
+    <% if @reservation.approval_status == "unapproved" %>
+      <%= form_with model: [:restaurant, @reservation], url: restaurant_update_reservation_path(@reservation), method: :patch, local: true do |f| %>
+        <%= f.radio_button :approval_status, :approved, checked: true %>
+        <%= f.label :approval_status, "承認する" %>
+        <%= f.radio_button :approval_status, :impossible, class:"ml-3" %>
+        <%= f.label :approval_status, "拒否する" %><br>
+      <div class="row justify-content-center">
+        <%= f.submit "送信する", "data-confirm" => "本当に送信してもよろしいですか？", class:"button_custom btn btn-success" %>
+      <% end %>
+      </div>
+    <%#承認済から来店済に変更する場合%>
+    <% elsif @reservation.approval_status == "approved" %>
+      <%= form_with model: [:restaurant, @reservation], url: restaurant_update_reservation_path(@reservation), method: :patch, local: true do |f| %>
+        <%= f.hidden_field :approval_status, :value => "visited" %>
+        <%= f.submit "来店済", "data-confirm" => "お客様のご来店を確認しました。", class:"btn btn-success" %>
+      <% end %>
+    <% end %>
+  </div>
 </div>

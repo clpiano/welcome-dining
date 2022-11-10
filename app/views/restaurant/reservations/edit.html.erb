@@ -30,9 +30,9 @@
       <%= f.label :approval_status, "承認する" %>
       <%= f.radio_button :approval_status, :impossible, class:"ml-3" %>
       <%= f.label :approval_status, "拒否する" %><br>
-  </div>
-  <div class="row justify-content-center">
-    <%= f.submit "送信する" %>
+    <div class="row justify-content-center">
+      <%= f.submit "送信する", class:"button_custom btn btn-success" %>
     <% end %>
+    </div>
   </div>
 </div>

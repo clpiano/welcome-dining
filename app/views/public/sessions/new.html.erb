@@ -3,7 +3,7 @@
   <div class="row justify-content-center">
     <%= form_with model: @customer, url: customer_session_path, method: :post do |f| %>
       <div class="form-group row m-2">
-        <%= f.label :メールアドレス, class:"col-sm-5" %>
+        <%= f.label :"E-mail", class:"col-sm-5" %>
         <%= f.email_field :email, class:"col-sm-7" %>
       </div>
 
@@ -13,7 +13,7 @@
       </div>
 
       <div class="form-group row justify-content-center mt-4">
-        <%= f.submit "ログイン" %>
+        <%= f.submit "ログイン", class:"btn btn-success" %>
       </div>
     <% end %>
   </div>

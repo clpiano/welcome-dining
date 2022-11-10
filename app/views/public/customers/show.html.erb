@@ -6,19 +6,18 @@
         <td><%= @customer.last_name %><%= @customer.first_name %></td>
       </tr>
       <tr>
-        <th>メールアドレス</th>
+        <th>E-mail</th>
         <td><%= @customer.email %></td>
       </tr>
       <tr>
-        <th>郵便番号</th>
-        <td>〒<%= @customer.zipcode %></td>
-      </tr>
-      <tr>
         <th>住所</th>
-        <td><%= @customer.address %></td>
+        <td>
+          〒<%= @customer.zipcode %><br>
+          <%= @customer.address %>
+        </td>
       </tr>
       <tr>
-        <th>電話番号</th>
+        <th>TEL</th>
         <td><%= @customer.phone_number %></td>
       </tr>
     </table>
