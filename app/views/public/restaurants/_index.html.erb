@@ -1,0 +1,22 @@
+<table class="table col-sm-10">
+  <thead>
+    <tr>
+      <th>店舗名</th>
+      <th>住所</th>
+      <th>カテゴリー</th>
+      <th>営業時間</th>
+      <th>詳細ページ</th>
+    </tr>  
+  </thead>
+  <% restaurants.each do |restaurant| %>
+    <tbody>
+      <tr>
+        <td><%= restaurant.name %></td>
+        <td><%= restaurant.address %></td>
+        <td><%#= restaurant.category %></td>
+        <td><%= restaurant.business_hours %></td>
+        <td><%= link_to "詳細", restaurant_path(restaurant) %></td>
+      </tr>  
+    </tbody>
+  <% end %>
+</table>

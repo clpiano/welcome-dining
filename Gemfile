@@ -63,3 +63,5 @@ gem 'enum_help'
 #ページネーション
 gem 'kaminari','~> 1.2.1'
 gem 'bootstrap4-kaminari-views'
+#検索
+gem 'ransack'

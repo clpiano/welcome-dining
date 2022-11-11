@@ -1,12 +1,11 @@
 <div class="container">
-  <h5 class="m-3">投稿詳細画面</h5>
+  <h5 class="m-3">投稿詳細</h5>
   <div class="row justify-content-center">
     <div class="card" style="width: 20rem;">
       <%#写真があれば表示%>
       <% if @post.image.attached? %>
         <%= image_tag @post.image, size: "250x200", class:"card-img-top" %>
       <% end %>
-
       <div class="card-body">
         <%#店舗名%>
         <h5><%= @post.restaurant.name %></h5>

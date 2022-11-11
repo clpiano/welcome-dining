@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row d-flex">
+    <h5 class="col-sm-3 m-3">検索結果</h5>
+    <div class="col-sm-8 m-3 text-right">
+      <%#検索フォーム%>
+      <%= search_form_for @q, url: search_restaurants_path do |f| %>
+        <%= f.label :name_cont, '飲食店名' %>
+        <%= f.search_field :name_cont %>
+        <%= f.submit '検索' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <%= render 'index', restaurants: @restaurants %>
+  </div>
+</div>

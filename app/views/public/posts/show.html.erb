@@ -9,7 +9,11 @@
 
       <div class="card-body">
         <%#店舗名%>
-        <h5><%= @post.restaurant.name %></h5>
+        <h5>
+          <%= link_to restaurant_path(@post.restaurant) do %>
+            <%= @post.restaurant.name %>
+          <% end %>
+        </h5>
         <%#投稿内容%>
         <%= simple_format(@post.content) %>
         <%= Rinku.auto_link(@post.home_page, :all, 'target="_blank"').html_safe %>

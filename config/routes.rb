@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     registrations: "restaurant/registrations",
     sessions: "restaurant/sessions"
   }
+  #ゲストログイン
+  devise_scope :customer do
+    post 'customer/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   #顧客用
   scope module: :public do
@@ -19,6 +23,9 @@ Rails.application.routes.draw do
     patch 'customers/information' => 'customers#update', as: 'update_information'
     resources :customers, only: [:show, :edit, :update]
     resources :restaurants, only: [:index, :show] do
+      collection do
+        get 'search'
+      end  
       resources :reservations, only: [:new, :create, :show]
       delete 'reservations/:id' => 'reservations#destroy', as: 'destroy_reservations'
     end
