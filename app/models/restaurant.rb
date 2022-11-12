@@ -9,5 +9,7 @@ class Restaurant < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :reservations
   #会員にフォローされる
-  has_many :customers, dependent: :destroy
+  has_many :reverse_of_relationships, class_name: "Relationships", foreign_key: "followed_id", dependent: :destroy
+  #一覧画面
+  has_many :followers, through: :reverse_of_relationships, source: :follower
 end

@@ -1,0 +1,7 @@
+<div class="container">
+  <div class="row">
+    <% if restaurants.exists? %>
+      <%= render 'public/restaurants/index', restaurants: @restaurants %>
+    <% end %>  
+  </div>    
+</div>  

@@ -4,8 +4,8 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     customer = Customer.find_or_create_by!(email: 'guest@example.com') do |customer|
       customer.password = SecureRandom.urlsafe_base64
-      customer.last_name = "ゲスト"
-      customer.first_name = "ユーザー"
+      customer.name = "ゲスト"
+      customer.kana_name = "ゲスト"
       customer.zipcode = 0000000
       customer.address = "○○県○○市"
       customer.phone_number = 11122223333

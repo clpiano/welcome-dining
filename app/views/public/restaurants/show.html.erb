@@ -6,10 +6,19 @@
         <%= image_tag @restaurant.image, size: "320x320" %>
       <% end %>
     </div>
-    <table class="table col-sm-10">
+    <table class="table col-sm-7">
       <%= render 'restaurant/homes/show', restaurant: @restaurant %>
     </table>
   </div>
+  <%#フォローボタン%>
+  <div class="row justify-content-center">
+    <% if current_customer.following?(@restaurant) %>
+      <%= link_to "フォロー外す", restaurant_relationships_path(@restaurant.id), method: :delete, class:"btn btn-danger" %>
+    <% else %>
+      <%= link_to "フォローする", restaurant_relationships_path(@restaurant.id), method: :post, class:"btn btn-success" %>
+    <% end %>
+  </div>
+
   <h5 class="m-3"><%= @restaurant.name %>の投稿一覧</h5>
   <div class="row justify-content-center">
     <%#選択した飲食店の投稿一覧%>
