@@ -6,9 +6,8 @@
       <% if @post.image.attached? %>
         <%= image_tag @post.image, size: "250x200", class:"card-img-top" %>
       <% end %>
-
       <div class="card-body">
-        <%#店舗名%>
+        <%#リンク付き(店舗詳細ページ)店舗名%>
         <h5>
           <%= link_to restaurant_path(@post.restaurant) do %>
             <%= @post.restaurant.name %>
@@ -16,12 +15,25 @@
         </h5>
         <%#投稿内容%>
         <%= simple_format(@post.content) %>
+        <%#Webサイトなどのリンクがあれば
         <%= Rinku.auto_link(@post.home_page, :all, 'target="_blank"').html_safe %>
-
       </div>
-      <font class="text-right" size="2">
-        <%= @post.created_at.strftime('%Y/%m/%d %H:%M') %>
-      </font>
+      <div class="d-flex justify-content-end">
+        <%#いいね%>
+        <% if @post.favorited?(current_customer) %>
+          <%= link_to post_favorites_path(@post.id), method: :delete do %>
+            <font size="4", style="color:red;">♥</font>
+          <% end %>
+        <% else %>
+          <%= link_to post_favorites_path(@post.id), method: :post do %>
+            <font size="4", style="color:black;">♡</font>
+          <% end %>
+        <% end %>
+        <%#投稿日%>
+        <font class="ml-5" size="2">
+          <%= @post.created_at.strftime('%Y/%m/%d %H:%M') %>
+        </font>
+      </div>
     </div>
   </div>
   <div class="row justify-content-center">

@@ -41,6 +41,6 @@ class Restaurant::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content, :home_page, :image, :category, :reservation_status)
+    params.require(:post).permit(:restaurant_id, :content, :link, :image, :reservation_status)
   end
 end

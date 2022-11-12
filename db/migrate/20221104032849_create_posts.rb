@@ -4,8 +4,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
 
       t.integer :restaurant_id,      null: false
       t.text :content,               null: false
-      t.string :home_page
-      t.string :category,            null: false
+      t.string :link
       t.boolean :reservation_status, null: false, default: true
       t.timestamps
     end

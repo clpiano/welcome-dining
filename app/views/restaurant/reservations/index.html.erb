@@ -7,23 +7,22 @@
         <th>予約人数</th>
         <th>予約時間</th>
         <th>ステータス</th>
+        <th>予約した日時</th>
         <th>詳細</th>
       </thead>
       <% @reservations.each do |reservation| %>
       <tbody>
-        <td>
-          <%= reservation.customer.last_name %>
-          <%= reservation.customer.first_name %>
-        </td>
+        <td><%= reservation.customer.name %></td>
         <td><%= reservation.number_of_people %></td>
         <td><%= reservation.reservation_time.strftime('%Y/%m/%d %H:%M') %></td>
         <td><%= reservation.approval_status_i18n %></td>
+        <td><%= reservation.created_at.strftime('%Y/%m/%d %H:%M') %></td>
         <td><%= link_to "詳細", restaurant_reserve_detail_path(reservation) %></td>
       </tbody>
     <% end %>
     </table>
   </div>
   <div class="row justify-content-center mb-5">
-    <%= paginate @reservations, theme: 'twitter-bootstrap-4' %>
+    <%= paginate @reservation, theme: 'twitter-bootstrap-4' %>
   </div>
 </div>

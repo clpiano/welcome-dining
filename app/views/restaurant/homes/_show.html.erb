@@ -1,6 +1,10 @@
 <tr>
-  <th>店舗名</th>
+  <th style="width: 20%">店舗名</th>
   <td><%= restaurant.name %></td>
+</tr>
+<tr>
+  <th>ジャンル</th>
+  <td><%= restaurant.genre %></td>
 </tr>
 <tr>
   <th>住所</th>
@@ -13,18 +17,22 @@
   <td><%= restaurant.phone_number %></td>
 </tr>
 <tr>
-  <th>URL</th>
-  <td><%= Rinku.auto_link(restaurant.home_page, :all, 'target="_blank"').html_safe %></td>
-</tr>
-<tr>
-  <th>営業時間</th>
-  <td><%= restaurant.business_hours %></td>
-</tr>
-<tr>
-  <th>定休日</th>
-  <td><%= restaurant.regular_holiday %></td>
-</tr>
-<tr>
   <th>E-mail</th>
   <td><%= restaurant.email %></td>
 </tr>
+<tr>
+  <th>営業時間</th>
+  <td><%= restaurant.start_time.strftime('%H:%M') %>～<%= restaurant.finish_time.strftime('%H:%M') %></td>
+</tr>
+<% if restaurant.regular_holiday.present? %><%#定休日なければ非表示%>
+  <tr>
+    <th>定休日</th>
+    <td><%= restaurant.regular_holiday %></td>
+  </tr>
+<% end %>
+<% if restaurant.web_site.present? %><%#Webサイトなければ非表示%>
+  <tr>
+    <th>URL</th>
+    <td><%= Rinku.auto_link(restaurant.web_site, :all, 'target="_blank"').html_safe %></td>
+  </tr>
+<% end %>

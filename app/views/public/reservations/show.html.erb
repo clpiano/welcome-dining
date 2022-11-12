@@ -3,31 +3,39 @@
   <div class="row justify-content-center">
     <table class="table-borderless m-5">
       <tr>
-        <th class="col">予約したお店</th>
-        <td><%= @reservation.restaurant.name %></td>
+        <th style="width: 50%">予約したお店</th>
+        <td>
+          <%= link_to restaurant_path(@reservation.restaurant) do %>
+            <%= @reservation.restaurant.name %>
+          <% end %>
+        </td>
       </tr>
       <tr>
-        <th class="col">氏名</th>
-        <td><%= current_customer.last_name %><%= current_customer.first_name %></td>
+        <th>氏名</th>
+        <td><ruby><%= current_customer.name %><rt><%= current_customer.kana_name %></rt></ruby></td>
       </tr>
       <tr>
-        <th class="col">E-mail</th>
+        <th>E-mail</th>
         <td><%= current_customer.email %></td>
       </tr>
       <tr>
-        <th class="col">TEL</th>
+        <th>TEL</th>
         <td><%= current_customer.phone_number %></td>
       </tr>
       <tr>
-        <th class="col">予約人数</th>
+        <th>予約人数</th>
         <td><%= @reservation.number_of_people %>名</td>
       </tr>
       <tr>
-        <th class="col">予約時間</th>
+        <th>予約時間</th>
         <td><%= @reservation.reservation_time.strftime('%Y/%m/%d %H:%M') %></td>
       </tr>
       <tr>
-        <th class="col">ステータス</th>
+        <th>備考</th>
+        <td><%= @reservation.note %></td>
+      </tr>
+      <tr>
+        <th>ステータス</th>
         <td><%= @reservation.approval_status_i18n %></td>
       </tr>
     </table>
@@ -39,8 +47,11 @@
     <%#承認ステータスが不可の場合%>
     <% elsif @reservation.approval_status == "impossible" %>
       <p>申し訳ございません。予約をお受けすることができませんでした。</p>
-    <% else %>
+    <%#承認ステータスが来店済の場合%>
+    <% elsif @reservation.approval_status == "approved" %>
       <p>ご予約ありがとうございます。ご来店をお待ちしております。</p>
+    <% else %>
+      <p>ご来店ありがとうございました。またのご利用お待ちしております。</p>
     <% end %>
   </div>
 </div>

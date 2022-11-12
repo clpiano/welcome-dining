@@ -3,10 +3,12 @@
   <div class="row justify-content-center">
     <%= form_with model: @customer, url:my_page_path, method: :patch do |f| %>
       <div class="form-group row">
-        <%= f.label :姓, class:"col-sm-2 text-right" %>
-        <%= f.text_field :last_name, class:"col-sm-4 form-control" %>
-        <%= f.label :名, class:"col-sm-2 text-right" %>
-        <%= f.text_field :first_name, class:"col-sm-4 form-control" %>
+        <%= f.label :氏名, class:"col-sm-5 text-right" %>
+        <%= f.text_field :name, class:"col-sm-7 form-control", placeholder:"山田太郎" %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :フリガナ, class:"col-sm-5 text-right" %>
+        <%= f.text_field :kana_name, class:"col-sm-7 form-control", placeholder:"ヤマダタロウ" %>
       </div>
       <div class="form-group row">
         <%= f.label :〒, class:"col-sm-5 text-right" %>

@@ -3,36 +3,35 @@
   <div class="row justify-content-center">
     <table class="table-borderless m-5">
       <tr>
-        <th class="col">お客様名</th>
-        <td><%= @reservation.customer.last_name %><%= @reservation.customer.first_name %></td>
+        <th style="width: 50%">お客様名</th>
+        <td><ruby><%= @reservation.customer.name %><rt><%= @reservation.customer.kana_name %></rt></ruby></td>
       </tr>
       <tr>
-        <th class="col">E-mail</th>
+        <th>E-mail</th>
         <td><%= @reservation.customer.email %></td>
       </tr>
       <tr>
-        <th class="col">TEL</th>
+        <th>TEL</th>
         <td><%= @reservation.customer.phone_number %></td>
       </tr>
       <tr>
-        <th class="col">予約人数</th>
+        <th>予約人数</th>
         <td><%= @reservation.number_of_people %>名</td>
       </tr>
       <tr>
-        <th class="col">予約時間</th>
+        <th>予約時間</th>
         <td><%= @reservation.reservation_time.strftime('%Y/%m/%d %H:%M') %></td>
       </tr>
       <tr>
-        <th class="col">備考</th>
+        <th>備考</th>
         <td><%= @reservation.note %></td>
       </tr>
       <tr>
-        <th class="col">ステータス</th>
+        <th>ステータス</th>
         <td><%= @reservation.approval_status_i18n %></td>
       </tr>
     </table>
   </div>
-
   <div class="row justify-content-center">
     <%#未承認の場合ラジオボタンで承認or拒否を選択%>
     <% if @reservation.approval_status == "unapproved" %>

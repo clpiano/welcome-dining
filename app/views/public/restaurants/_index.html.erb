@@ -6,17 +6,17 @@
       <th>カテゴリー</th>
       <th>営業時間</th>
       <th>詳細ページ</th>
-    </tr>  
+    </tr>
   </thead>
   <% restaurants.each do |restaurant| %>
     <tbody>
       <tr>
         <td><%= restaurant.name %></td>
         <td><%= restaurant.address %></td>
-        <td><%#= restaurant.category %></td>
-        <td><%= restaurant.business_hours %></td>
+        <td><%= restaurant.genre %></td>
+        <td><%= restaurant.start_time.strftime('%H:%M') %>～<%= restaurant.finish_time.strftime('%H:%M') %></td>
         <td><%= link_to "詳細", restaurant_path(restaurant) %></td>
-      </tr>  
+      </tr>
     </tbody>
   <% end %>
 </table>

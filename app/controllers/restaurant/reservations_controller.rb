@@ -1,8 +1,8 @@
 class Restaurant::ReservationsController < ApplicationController
 
   def index
-    @reservations = current_restaurant.reservations.all.order(reservation_time: "DESC")
-    @reservations = current_restaurant.reservations.all.page(params[:page]).per(10)
+    @reservations = current_restaurant.reservations.all.order(created_at: :DESC)
+    @reservation = current_restaurant.reservations.all.page(params[:page]).per(10)
   end
 
   def show

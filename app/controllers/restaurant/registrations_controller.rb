@@ -69,6 +69,6 @@ class Restaurant::RegistrationsController < Devise::RegistrationsController
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:id, :name, :zipcode, :address, :phone_number, :home_page, :business_hours, :image)
+    params.require(:restaurant).permit(:id, :name, :genre, :zipcode, :address, :phone_number, :web_site, :start_time, :finish_time, :regular_holiday, :image)
   end
 end

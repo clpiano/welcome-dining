@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   #顧客用
   scope module: :public do
     root to: 'homes#top'
-    resources :posts, only: [:index, :show]
+    resources :posts, only: [:index, :show] do
+      resource :favorites, only: [:create, :destroy]
+    end  
     get 'customers/my_page' => "customers#show", as: "my_page"
     get 'customers/information/edit' => 'customers#edit', as: 'edit_information'
     patch 'customers/information' => 'customers#update', as: 'update_information'

@@ -1,39 +1,39 @@
 <div class="container">
   <h5 class="m-3">新規予約</h5>
   <div class="row">
-    <table class="table col-sm-7">
+    <table class="table col-sm-7 mr-5">
       <%= render 'restaurant/homes/show', restaurant: @restaurant %>
     </table>
     <%= form_with model: @reservation, url:restaurant_reservations_path do |f| %>
     <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
     <%= f.hidden_field :customer_id, :value => current_customer.id %>
     <%= f.hidden_field :approval_status, :value => "unapproved" %>
-      <table class="border ml-2">
+      <table class="border">
         <tr>
-          <th class="col">氏名</th>
-          <td><%= current_customer.last_name %><%= current_customer.first_name %></td>
+          <th style="width: 30%">氏名</th>
+          <td><ruby><%= current_customer.name %><rt><%= current_customer.kana_name %></rt></ruby></td>
         </tr>
         <tr>
-          <th class="col">E-mail</th>
+          <th>E-mail</th>
           <td><%= current_customer.email %></td>
         </tr>
         <tr>
-          <th class="col">TEL</th>
+          <th>TEL</th>
           <td><%= current_customer.phone_number %></td>
         </tr>
         <tr>
-          <th class="col">予約人数</th>
-          <td class="my-2"><%= f.select :number_of_people, *[1..10] %>名</td>
+          <th>予約人数</th>
+          <td><%= f.select :number_of_people, *[1..10] %>名</td>
         </tr>
         <tr>
-          <th class="col">予約時間</th>
-          <td class="d-flex my-2">
+          <th>予約時間</th>
+          <td>
             <%= Date.current.strftime('%Y/%m/%d') %><br>
             <%= f.time_select :reservation_time, :minute_step => 10 %>
           </td>
         </tr>
         <tr>
-          <th class="col">備考</th>
+          <th>備考</th>
           <td><%= f.text_field :note, class:"form-control" %></td>
         </tr>
       </table>

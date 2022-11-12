@@ -8,4 +8,6 @@ class Restaurant < ApplicationRecord
   
   has_many :posts, dependent: :destroy
   has_many :reservations
+  #会員にフォローされる
+  has_many :customers, dependent: :destroy
 end
