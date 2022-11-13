@@ -1,0 +1,12 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+<div class="col-sm-6 mx-auto">
+  <div class="form-inline">
+    <li>
+      <% case notification.action %>
+      <% when 'reservation' then %>
+      <p><%= safe_join(notification.reservation.content.split("\n"), tag(:br)) %></p>
+      <% end %>
+    </li>
+  </div>
+</div>

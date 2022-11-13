@@ -51,5 +51,6 @@ Rails.application.routes.draw do
     #get 'reservation/:id/edit' => 'reservations#edit', as: 'edit_reservation'
     patch 'reservation/:id' => 'reservations#update', as: 'update_reservation'
     resources :customers
+    resources :notifications, only: :index
   end
 end

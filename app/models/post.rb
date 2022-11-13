@@ -9,5 +9,7 @@ class Post < ApplicationRecord
   
   def favorited?(customer)
     favorites.where(customer_id: customer.id).exists?
-  end  
+  end
+  #通知機能
+  has_many :notifications, dependent: :destroy
 end

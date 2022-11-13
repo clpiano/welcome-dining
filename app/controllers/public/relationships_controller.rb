@@ -9,7 +9,7 @@ class Public::RelationshipsController < ApplicationController
     current_customer.unfollow(params[:restaurant_id])
     redirect_to request.referer
   end
-  #フォロー
+  #フォロー一覧
   def followings
     customer = current_customer
     @restaurants = customer.followings
