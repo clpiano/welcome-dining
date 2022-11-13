@@ -16,7 +16,7 @@ class Public::ReservationsController < ApplicationController
   end
 
   def index
-    @reservations = current_customer.reservations.all
+    @reservations = current_customer.reservations.all.order(created_at: :DESC)
   end
 
   def edit

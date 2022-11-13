@@ -35,7 +35,6 @@ Rails.application.routes.draw do
       #フォロー機能用
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
-    
       #予約
       resources :reservations, only: [:new, :create, :show]
       delete 'reservations/:id' => 'reservations#destroy', as: 'destroy_reservations'

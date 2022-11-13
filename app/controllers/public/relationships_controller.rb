@@ -8,10 +8,10 @@ class Public::RelationshipsController < ApplicationController
   def destroy
     current_customer.unfollow(params[:restaurant_id])
     redirect_to request.referer
-  end  
+  end
   #フォロー
   def followings
-    restaurant = Restaurant.find(params[:restaurant_id])
-    @restaurants = restaurants.followings
+    customer = current_customer
+    @restaurants = customer.followings
   end
 end
