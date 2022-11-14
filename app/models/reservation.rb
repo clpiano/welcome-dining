@@ -7,13 +7,7 @@ class Reservation < ApplicationRecord
   has_many :notifications, dependent: :destroy
 
   def create_notification_reservation(current_customer, reservation_id)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and reservation_id = ? and action = ? ", current_customer.id, restaurant_id, id, 'reservation'])
-    #temp_ids = Reservation.select(:customer_id).where(reservation_id: id).where.not(customer_id: current_customer.id).distinct
-    #temp_ids.each do |temp_id|
-      #save_notification_reserve(current_customer, reservation_id, temp_id['customer_id'])
-    #end
-    #save_notification_reserve(current_customer, reservation_id, restaurant_id) if temp_ids.blank?
-  #end
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and reservation_id = ? and action = ? ", current_customer.id, restaurant_id, reservation_id, 'reservation'])
 
     if temp.blank?
       notification = current_customer.active_notifications.new(

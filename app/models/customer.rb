@@ -7,12 +7,12 @@ class Customer < ApplicationRecord
   has_many :reservations, dependent: :destroy
   #いいね機能
   has_many :favorites, dependent: :destroy
-  
+
   #フォロー機能(フォローした側)
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   #一覧画面
   has_many :followings, through: :relationships, source: :followed
-  
+
   #フォローしたときの処理
   def follow(restaurant_id)
     relationships.create(followed_id: restaurant_id)

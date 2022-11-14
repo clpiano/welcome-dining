@@ -1,12 +1,23 @@
-<% visitor = notification.visitor %>
-<% visited = notification.visited %>
-<div class="col-sm-6 mx-auto">
-  <div class="form-inline">
-    <li>
-      <% case notification.action %>
-      <% when 'reservation' then %>
-      <p><%= safe_join(notification.reservation.content.split("\n"), tag(:br)) %></p>
-      <% end %>
-    </li>
-  </div>
-</div>
+<% notifications.each do |notification| %>
+<%# visitor = notification.visitor %>
+<%# visited = notification.visited %>
+<% visitor = notification.visitor.name %>
+    <div class="col-sm-6 mx-auto">
+      <div class="table">
+        <span>
+          <%#承認ステータスが未承認の場合表示%>
+          <% if notification.reservation.approval_status == "unapproved" %>
+            <% case notification.action %>
+            <% when 'reservation' then %>
+              <%= link_to restaurant_reserve_detail_path(notification.reservation) do %>
+                <%= visitor %><%#予約リクエストを送信した会員名%>
+              <% end %>
+              様から予約リクエストを受信しました
+            <% end %>
+            <%#= notification_form(notification) %>
+            <span class="ml-3"><%= time_ago_in_words(notification.created_at) + "前" %></span>
+          <% end %>
+        </span>
+      </div>
+    </div>
+<% end %>
