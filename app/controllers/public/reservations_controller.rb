@@ -7,11 +7,15 @@ class Public::ReservationsController < ApplicationController
 
   def create
     @reservation = current_customer.reservations.new(reservation_params)
-    @reservation.save
-    #通知機能
-    @reservation.create_notification_reservation(current_customer, @reservation.id)
-    #ここまで
-    redirect_to restaurant_reservation_path(@reservation.restaurant, @reservation)
+    if @reservation.save
+      #通知機能
+      @reservation.create_notification_reservation(current_customer, @reservation.id)
+      #ここまで
+      redirect_to restaurant_reservation_path(@reservation.restaurant, @reservation)
+    else
+      @restaurant = Restaurant.find(params[:restaurant_id])
+      render :new
+    end
   end
 
   def show

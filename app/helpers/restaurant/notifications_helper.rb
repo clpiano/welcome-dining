@@ -11,7 +11,7 @@ module Restaurant::NotificationsHelper
         "#{visitor}が予約リクエストを送信しました"
     end
   end
-  #未確認の
+  #未確認
   def unchecked_notifications
     @notifications = current_restaurant.passive_notificaions.where(checked: false)
   end  

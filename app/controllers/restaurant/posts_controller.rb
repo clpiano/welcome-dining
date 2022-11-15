@@ -7,8 +7,11 @@ class Restaurant::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.restaurant_id = current_restaurant.id
-    @post.save
-    redirect_to restaurant_post_path(@post)
+    if @post.save
+      redirect_to restaurant_post_path(@post)
+    else
+      render :new
+    end
   end
   #投稿一覧画面
   def index

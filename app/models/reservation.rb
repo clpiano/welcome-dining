@@ -3,6 +3,15 @@ class Reservation < ApplicationRecord
   belongs_to :restaurant
   #予約の承認ステータス
   enum approval_status: { unapproved: 0, approved: 1, impossible: 2, visited: 3 }
+  #バリデーション
+  validates :number_of_people, presence: true
+  validates :reservation_time, presence: true
+  validate :start_check
+  #現在より遅い時間に設定させる
+  def start_check
+    errors.add(:reservation_time, "は現在の日時より遅い時間を選択してください") if self.reservation_time < Time.now
+  end
+
   #通知機能
   has_many :notifications, dependent: :destroy
 
@@ -15,7 +24,6 @@ class Reservation < ApplicationRecord
         visited_id: restaurant_id,
         action: 'reservation'
         )
-
       notification.save if notification.valid?
     end
   end

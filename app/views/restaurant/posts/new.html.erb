@@ -2,13 +2,14 @@
   <h5 class="m-4">新規投稿</h5>
   <div class="row justify-content-center">
     <%= form_with model: @post, url:restaurant_posts_path do |f| %>
+    <%= render 'layouts/errors', obj: @post %>
       <div class="form-group row">
-        <%= f.label :Text %>
+        <%= f.label :投稿内容 %>
         <%= f.text_area :content, class:"form-control", size: "30x5" %>
       </div>
       <div class="form-group row">
         <%= f.label :URL, "URL" %>
-        <%= f.text_field :link, class:"form-control" %>
+        <%= f.text_field :link, class:"form-control", placeholder:"投稿にリンクを貼ることができます" %>
       </div>
       <div class="form-group row">
         <%= f.label :写真, class:"mr-3" %>

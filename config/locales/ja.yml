@@ -42,3 +42,28 @@ ja:
       over_x_years:
         one:   "1年以上"
         other: "%{count}年以上"
+
+  activerecord:
+    attributes:
+      restaurant:
+        name: 店舗名
+        genre: ジャンル
+        zipcode: 郵便番号
+        address: 住所
+        phone_number: 電話番号
+        email: メールアドレス
+        password: パスワード
+        resource: 登録内容
+      customer:
+        name: 氏名
+        kana_name: フリガナ
+        zipcode: 郵便番号
+        address: 住所
+        phone_number: 電話番号
+        email: メールアドレス
+        password: パスワード
+      reservation:
+        number_of_people: 予約人数
+        reservation_time: 予約時間
+      post:
+        content: 投稿内容

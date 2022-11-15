@@ -5,6 +5,14 @@ class Restaurant < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :image
+  #バリデーション
+  validates :name, presence: true
+  validates :genre, presence: true
+  validates :zipcode, presence: true
+  validates :address, presence: true
+  validates :phone_number, presence: true
+  validates :start_time, presence: true
+  validates :finish_time, presence: true
   
   has_many :posts, dependent: :destroy
   has_many :reservations

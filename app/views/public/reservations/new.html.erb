@@ -8,6 +8,7 @@
     <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
     <%= f.hidden_field :customer_id, :value => current_customer.id %>
     <%= f.hidden_field :approval_status, :value => "unapproved" %>
+      <%= render 'layouts/errors', obj: @reservation %>
       <table class="border">
         <tr>
           <th style="width: 30%">氏名</th>

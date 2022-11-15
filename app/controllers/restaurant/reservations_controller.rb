@@ -17,6 +17,8 @@ class Restaurant::ReservationsController < ApplicationController
     @reservation = current_restaurant.reservations.find(params[:id])
     @reservation.approval_status = params[:approval_status]
     @reservation.update(reservation_params)
+    #通知機能
+    #@reservation.destroy_notification_reservation(current_restaurant, @reservation_id)
     redirect_to restaurant_reserve_path
   end
 
