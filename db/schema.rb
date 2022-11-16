@@ -121,7 +121,7 @@ ActiveRecord::Schema.define(version: 2022_11_13_122829) do
     t.string "phone_number", null: false
     t.time "start_time", null: false
     t.time "finish_time", null: false
-    t.datetime "last_order"
+    t.text "notice"
     t.string "regular_holiday"
     t.string "web_site"
     t.datetime "created_at", precision: 6, null: false

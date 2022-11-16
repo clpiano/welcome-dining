@@ -5,4 +5,7 @@
       <%= render 'public/restaurants/index', restaurants: @restaurants %>
     <% end %>
   </div>
+  <div class="row justify-content-center">
+    <%= paginate @restaurants, theme: 'twitter-bootstrap-4' %>
+  </div>
 </div>

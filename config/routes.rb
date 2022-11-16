@@ -20,13 +20,16 @@ Rails.application.routes.draw do
   #顧客用
   scope module: :public do
     root to: 'homes#top'
+    get 'posts/search'
     resources :posts, only: [:index, :show] do
       resource :favorites, only: [:create, :destroy]
     end
-    get 'customers/my_page' => "customers#show", as: "my_page"
+    get 'customers/my_page' => 'customers#show', as: 'my_page'
     get 'customers/information/edit' => 'customers#edit', as: 'edit_information'
     patch 'customers/information' => 'customers#update', as: 'update_information'
     resources :customers, only: [:show, :edit, :update]
+    #いいね一覧
+    get 'customers/favorites' => 'customers#favorites', as: 'favorites'
     resources :restaurants, only: [:index, :show] do
       #飲食店名検索用
       collection do

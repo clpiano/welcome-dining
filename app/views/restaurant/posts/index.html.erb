@@ -4,10 +4,10 @@
     <div class="post-index">
       <% @posts.each do |post| %>
         <%= link_to restaurant_post_path(post) do %>
-          <div class="card mb-2" style="width: 15rem;">
+          <div class="card mb-2" style="width: 20rem;">
             <%#写真があれば表示%>
             <% if post.image.attached? %>
-              <%= image_tag post.image, size: "130x100", class:"card-img-top" %>
+              <%= image_tag post.image, size: "150x150", class:"card-img-top" %>
             <% end %>
             <div class="card-body">
               <%#店舗名%>
@@ -15,7 +15,9 @@
               <%#投稿内容%>
               <%= simple_format(post.content, style:"color:black;") %>
               <%#リンク%>
-              <%= Rinku.auto_link(post.link, :all, 'target="_blank"').html_safe %>
+              <%= Rinku.auto_link(post.link, :all, 'target="_blank"').html_safe %><br>
+              <%#ジャンル%>
+              <p style="color:black;"><%= post.restaurant.genre %></p>
             </div>
             <font class="text-right" size="2" style="color:black;">
               <%#投稿日時%>

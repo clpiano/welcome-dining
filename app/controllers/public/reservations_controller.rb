@@ -23,7 +23,7 @@ class Public::ReservationsController < ApplicationController
   end
 
   def index
-    @reservations = current_customer.reservations.all.order(created_at: :DESC)
+    @reservations = current_customer.reservations.all.order(created_at: :DESC).page(params[:page]).per(10)
   end
 
   def edit

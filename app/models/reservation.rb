@@ -27,4 +27,11 @@ class Reservation < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+  #うまくいかない
+  def destroy_notification_reservation(current_restaurant, reservation_id)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and reservation_id = ? and action = ? ", customer.id, restaurant_id, reservation_id, 'reservation'])
+    if temp.exists?
+      temp.destroy
+    end
+  end
 end

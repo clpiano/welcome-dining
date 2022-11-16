@@ -1,40 +1,44 @@
-<% posts.each do |post| %>
-  <%= link_to post_path(post) do %>
-    <div class="card mb-2" style="width: 15rem;">
-      <%#写真があれば表示%>
-      <% if post.image.attached? %>
-        <%= image_tag post.image, size: "130x100", class:"card-img-top" %>
-      <% end %>
-      <div class="card-body">
-        <%#店舗名%>
-        <h5 style="color:black;"><%= post.restaurant.name %></h5>
-        <%#投稿内容%>
-        <%= simple_format(post.content, style:"color:black;") %>
-        <%#リンク%>
-        <%= Rinku.auto_link(post.link, :all, 'target="_blank"').html_safe %>
-        <%#予約ステータス%>
-        <% if post.reservation_status == true %>
-          <p class="text-success text-center">予約受付中</p>
-        <% else %>
-          <p class="text-muted text-center">予約停止中</p>
+<div class="post-index">
+  <% posts.each do |post| %>
+    <%= link_to post_path(post) do %>
+      <div class="card mb-2" style="width: 20rem;">
+        <%#写真があれば表示%>
+        <% if post.image.attached? %>
+          <%= image_tag post.image, size: "150x150", class:"card-img-top" %>
         <% end %>
-      </div>
-      <div class="d-flex justify-content-end">
-        <%#いいね%>
-        <% if post.favorited?(current_customer) %>
-          <%= link_to post_favorites_path(post.id), method: :delete do %>
-            <font size="4", style="color:red;">♥</font>
+        <div class="card-body">
+          <%#店舗名%>
+          <h5 style="color:black;"><%= post.restaurant.name %></h5>
+          <%#投稿内容%>
+          <%= simple_format(post.content, style:"color:black;") %>
+          <%#リンク%>
+          <%= Rinku.auto_link(post.link, :all, 'target="_blank"').html_safe %>
+          <%#ジャンル%>
+          <p style="color:black;"><%= post.restaurant.genre %></p>
+          <%#予約ステータス%>
+          <% if post.reservation_status == true %>
+            <p class="text-success text-center">予約受付中</p>
+          <% else %>
+            <p class="text-muted text-center">予約停止中</p>
           <% end %>
-        <% else %>
-          <%= link_to post_favorites_path(post.id), method: :post do %>
-            <font size="4", style="color:black;">♡</font>
+        </div>
+        <div class="d-flex justify-content-end">
+          <%#いいね%>
+          <% if post.favorited?(current_customer) %>
+            <%= link_to post_favorites_path(post.id), method: :delete do %>
+              <font size="4", style="color:red;">♥</font>
+            <% end %>
+          <% else %>
+            <%= link_to post_favorites_path(post.id), method: :post do %>
+              <font size="4", style="color:black;">♡</font>
+            <% end %>
           <% end %>
-        <% end %>
-        <%#投稿日%>
-        <font class="ml-3" size="2">
-          <%= post.created_at.strftime('%Y/%m/%d %H:%M') %>
-        </font>
+          <%#投稿日%>
+          <font class="ml-5" size="2">
+            <%= post.created_at.strftime('%Y/%m/%d %H:%M') %>
+          </font>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>

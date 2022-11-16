@@ -15,8 +15,10 @@
         </h5>
         <%#投稿内容%>
         <%= simple_format(@post.content) %>
-        <%#Webサイトなどのリンクがあれば
-        <%= Rinku.auto_link(@post.home_page, :all, 'target="_blank"').html_safe %>
+        <%#Webサイトなどのリンクがあれば%>
+        <%= Rinku.auto_link(@post.link, :all, 'target="_blank"').html_safe %>
+        <%#ジャンル%>
+        <p style="color:black;"><%= @post.restaurant.genre %></p>
       </div>
       <div class="d-flex justify-content-end">
         <%#いいね%>

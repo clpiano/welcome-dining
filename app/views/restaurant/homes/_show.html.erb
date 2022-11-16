@@ -36,3 +36,9 @@
     <td><%= Rinku.auto_link(restaurant.web_site, :all, 'target="_blank"').html_safe %></td>
   </tr>
 <% end %>
+<% if restaurant.notice.present? %><%#注意事項なければ非表示%>
+  <tr>
+    <th>お客様へ</th>
+    <td><%= restaurant.notice %></td>
+  </tr>
+<% end %>

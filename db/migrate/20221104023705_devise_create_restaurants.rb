@@ -39,7 +39,7 @@ class DeviseCreateRestaurants < ActiveRecord::Migration[6.1]
       t.string :phone_number,    null: false
       t.time :start_time,        null: false
       t.time :finish_time,       null: false
-      t.datetime :last_order
+      t.text :notice
       t.string :regular_holiday
       t.string :web_site
 

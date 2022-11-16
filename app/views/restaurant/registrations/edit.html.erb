@@ -4,43 +4,47 @@
     <%= form_with model: @restaurant, url:restaurant_registration_path, method: :patch do |f| %>
     <%= render "restaurant/shared/error_messages", resource: resource %>
 
-    <div class="form-group row">
-      <%= f.label :店舗名, class:"col-sm-5 text-right" %>
-      <%= f.text_field :name, class:"col-sm-7 form-control" %>
+    <div class="form-group">
+      <%= f.label :店舗名 %>
+      <%= f.text_field :name, class:"form-control" %>
     </div>
     <div class="form-group">
       <%= f.label :ジャンル %>
       <%= f.select :genre, [["カフェ・スイーツ"], ["和食"], ["洋食"], ["中華"], ["アジア・エスニック"], ["イタリアン"], ["カレー"], ["居酒屋・バー"],["その他"]], { include_blank: "選択してください"}, class:"form-control" %>
     </div>
-    <div class="form-group row">
-      <%= f.label :〒, class:"col-sm-5 text-right" %>
-      <%= f.text_field :zipcode, class:"col-sm-7 form-control", placeholder:"0000000" %>
+    <div class="form-group">
+      <%= f.label :郵便番号 %>
+      <%= f.text_field :zipcode, class:"form-control", placeholder:"0000000" %>
     </div>
-    <div class="form-group row">
-      <%= f.label :住所, class:"col-sm-5 text-right" %>
-      <%= f.text_field :address, class:"col-sm-7 form-control", placeholder:"東京都○○区○○町0-0" %>
+    <div class="form-group">
+      <%= f.label :住所 %>
+      <%= f.text_field :address, class:"form-control", placeholder:"東京都○○区○○町0-0" %>
     </div>
-    <div class="form-group row">
-      <%= f.label :TEL,"TEL", class:"col-sm-5 text-right" %>
-      <%= f.text_field :phone_number, class:"col-sm-7 form-control", placeholder:"0000000000" %>
+    <div class="form-group">
+      <%= f.label :TEL,"TEL" %>
+      <%= f.text_field :phone_number, class:"form-control", placeholder:"0000000000" %>
     </div>
-    <div class="form-group row">
+    <div class="form-group">
       <%= f.label :営業時間 %>
       <%= f.time_select :start_time, :minute_step => 30 %>～<%= f.time_select :finish_time, :minute_step => 30 %>
     </div>
-    <div class="form-group row">
-      <%= f.label :定休日, class:"col-sm-5 text-right" %>
-      <%= f.text_field :regular_holiday, class:"col-sm-7 form-control" %>
+    <div class="form-group">
+      <%= f.label :定休日 %>
+      <%= f.text_field :regular_holiday, class:"form-control", placeholder:"例）毎週木曜日" %>
     </div>
-    <div class="form-group row">
-      <%= f.label :Webサイト, class:"col-sm-5 text-right" %>
-      <%= f.text_field :web_site, class:"col-sm-7 form-control", placeholder: "リンクをはって下さい" %>
+    <div class="form-group">
+      <%= f.label :Webサイト %>
+      <%= f.text_field :web_site, class:"form-control", placeholder: "リンクをはって下さい" %>
     </div>
-    <div class="form-group row">
-      <%= f.label :"E-mail", class:"col-sm-5 text-right" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-sm-7 form-control" %>
+    <div class="form-group">
+      <%= f.label :"お客様へ(予約時の注意事項など)"%>
+      <%= f.text_field :notice, class:"form-control", placeholder:"例）ラストオーダーは営業終了30分前です" %>
     </div>
-    <div class="form-group row">
+    <div class="form-group">
+      <%= f.label :"E-mail" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+    </div>
+    <div class="form-group">
       <%= f.label :お店の写真 %>
       <%= f.file_field :image %>
     </div>

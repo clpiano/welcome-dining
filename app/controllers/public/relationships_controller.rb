@@ -11,7 +11,6 @@ class Public::RelationshipsController < ApplicationController
   end
   #フォロー一覧
   def followings
-    customer = current_customer
-    @restaurants = customer.followings
+    @restaurants = current_customer.followings.page(params[:page]).per(20)
   end
 end
