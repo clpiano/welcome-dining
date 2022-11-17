@@ -1,6 +1,5 @@
 class Notification < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
-  belongs_to :post, optional: true
   belongs_to :reservation, optional: true
   
   belongs_to :visitor, class_name: 'Customer', foreign_key: 'visitor_id', optional: true

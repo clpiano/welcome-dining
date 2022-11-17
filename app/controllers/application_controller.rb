@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     when Restaurant
       restaurant_reserve_path#(仮)
     when Customer
-      root_path
+      posts_path
     end
   end
 

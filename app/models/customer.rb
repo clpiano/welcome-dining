@@ -10,7 +10,7 @@ class Customer < ApplicationRecord
   validates :zipcode, presence: true
   validates :address, presence: true
   validates :phone_number, presence: true
-
+  #予約機能
   has_many :reservations, dependent: :destroy
   #いいね機能
   has_many :favorites, dependent: :destroy
@@ -34,5 +34,4 @@ class Customer < ApplicationRecord
   end
   #通知機能
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
-  #has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 end

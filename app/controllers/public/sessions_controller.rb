@@ -11,7 +11,7 @@ class Public::SessionsController < Devise::SessionsController
       customer.phone_number = 11122223333
     end
     sign_in customer
-    redirect_to root_path, notice: 'ゲストユーザーとしてログイン'
+    redirect_to posts_path, notice: 'ゲストユーザーとしてログイン'
   end
   # before_action :configure_sign_in_params, only: [:create]
 

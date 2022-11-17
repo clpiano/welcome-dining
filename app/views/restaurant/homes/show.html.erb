@@ -1,12 +1,12 @@
 <div class="container">
   <h5 class="m-3">飲食店マイページ</h5>
   <div class="row justify-content-center m-3">
-    <div class="col-sm-4 mb-3">
+    <div class="col-sm-4 mt-3">
       <% if @restaurant.image.attached? %>
         <%= image_tag @restaurant.image, size: "320x320" %>
       <% end %>
     </div>
-    <table class="table col-sm-10">
+    <table class="table col-sm-8">
       <%= render 'show', restaurant: @restaurant %>
     </table>
   </div>

@@ -14,7 +14,7 @@ class Reservation < ApplicationRecord
 
   #通知機能
   has_many :notifications, dependent: :destroy
-
+  #会員側で予約リクエストを送った時
   def create_notification_reservation(current_customer, reservation_id)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and reservation_id = ? and action = ? ", current_customer.id, restaurant_id, reservation_id, 'reservation'])
 
@@ -27,11 +27,17 @@ class Reservation < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-  #うまくいかない
-  def destroy_notification_reservation(current_restaurant, reservation_id)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and reservation_id = ? and action = ? ", customer.id, restaurant_id, reservation_id, 'reservation'])
-    if temp.exists?
-      temp.destroy
+
+  #飲食店側から承認を送ったとき
+  def approved_notification_reservation(current_restaurant, reservation_id, status)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and reservation_id = ? and action = ? ", customer_id, current_restaurant.id, reservation_id, status])
+    if temp.blank?
+      notification = current_restaurant.passive_notifications.new(
+        reservation_id: id,
+        visitor_id: customer_id,
+        action: status
+        )
+      notification.save if notification.valid?
     end
   end
 end
