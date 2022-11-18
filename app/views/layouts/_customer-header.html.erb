@@ -1,39 +1,27 @@
-<nav class="navbar navbar-expand-lg navbar-light">
-  <div class="container"> <%#a class="navbar-brand-light" style="color:#ffffff;" href="/">NaganoCake</a%>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item mr-2">
-          <li class="nav-item mr-2">
-            <%= link_to 'マイページ', my_page_path, class:"btn btn-sm btn-dark" %>
-          </li>
-          <li class="nav-item mr-2">
-            <%= link_to '投稿一覧', posts_path, class:"btn btn-sm btn-dark" %>
-          </li>
-          <li class="nav-item mr-2">
-            <%= link_to '予約一覧', reservations_path, class:"btn btn-sm btn-dark" %>
-          </li>
-          <li class="nav-item mr-2">
-            <%= link_to '飲食店一覧', restaurants_path, class:"btn btn-sm btn-dark" %>
-          </li>
-
-          <li class="nav-item mr-2">
-            <%= link_to 'フォロー一覧', public_relationships_followings_path, class:"btn btn-sm btn-dark" %>
-          </li>
-
-          <li class="nav-item mr-2">
-            <%= link_to '通知一覧', notifications_path, class:"btn btn-sm btn-dark" %>
-          </li>
-
-          <li class="nav-item">
-            <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class:"btn btn-sm btn-dark" %>
-          </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<div class="suv-nav text-center">
+<div class="suv-nav text-center mx-3 my-1">
   <%#ログイン中の会員名 %>
   <div class="login customer_name ml-auto" style="color:#ffffff;">
     <%= current_customer.name %>さん
   </div>
 </div>
+<li class="nav-item mr-2 my-1">
+  <%= link_to 'マイページ', my_page_path, class:"btn btn-sm btn-dark" %>
+</li>
+<li class="nav-item mr-2 my-1">
+  <%= link_to '通知一覧', notifications_path, class:"btn btn-sm btn-dark" %>
+</li>
+<li class="nav-item mr-2 my-1">
+  <%= link_to '予約一覧', reservations_path, class:"btn btn-sm btn-dark" %>
+</li>
+<li class="nav-item mr-2 my-1">
+  <%= link_to '投稿一覧', posts_path, class:"btn btn-sm btn-dark" %>
+</li>
+<li class="nav-item mr-2 my-1">
+  <%= link_to '飲食店一覧', restaurants_path, class:"btn btn-sm btn-dark" %>
+</li>
+<li class="nav-item mr-2 my-1">
+  <%= link_to 'フォロー一覧', public_relationships_followings_path, class:"btn btn-sm btn-dark" %>
+</li>
+<li class="nav-item mr-2 my-1">
+  <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class:"btn btn-sm btn-dark" %>
+</li>

@@ -1,26 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-light">
-  <div class="container"> <%#a class="navbar-brand-light" style="color:#ffffff;" href="/">NaganoCake</a%>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ml-auto">
-          <li class="nav-item mr-2">
-            <%= link_to 'ログイン', new_customer_session_path, class: "btn btn-sm btn-dark" %>
-          </li>
-          <li class="nav-item mr-2">
-            <%= link_to '飲食店ログイン', new_restaurant_session_path, class: "btn btn-sm btn-dark" %>
-          </li>
-          <li class="nav-item mr-2">
-            <%#= link_to '注文履歴一覧',admin_root_path,class: "btn btn-sm btn-dark" %>
-          </li>
-          <li class="nav-item mr-2">
-            <%#= link_to 'ジャンル一覧', admin_genres_path,class: "btn btn-sm btn-dark" %>
-          </li>
-          <li class="nav-item">
-            <%#= link_to 'ログアウト',destroy_admin_session_path, method: :delete,class: "btn btn-sm btn-dark" %>
-          </li>
-          <li class="nav-item">
-          <%= link_to 'ゲストログイン（閲覧用）', customer_guest_sign_in_path, method: :post, class: "btn btn-sm btn-dark" %>
-          </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<li class="nav-item mr-2 my-1">
+  <%= link_to 'ログイン', new_customer_session_path, class: "btn btn-sm btn-dark" %>
+</li>
+<li class="nav-item mr-2 my-1">
+  <%= link_to 'About(仮)', new_restaurant_session_path, class: "btn btn-sm btn-dark" %>
+</li>
+<li class="nav-item mr-2 my-1">
+  <%= link_to 'ゲストログイン（閲覧用）', customer_guest_sign_in_path, method: :post, class: "btn btn-sm btn-dark" %>
+</li>

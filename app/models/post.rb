@@ -5,7 +5,6 @@ class Post < ApplicationRecord
   has_one :reservation
   #バリデーション
   validates :content, presence: true
-  validates :reservation_status, presence: true
 
   #いいね機能
   has_many :favorites, dependent: :destroy

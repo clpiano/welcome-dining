@@ -1,7 +1,7 @@
 <div class="container">
   <h5 class="m-3">新規予約</h5>
   <div class="row">
-    <table class="table col-sm-7 mr-5">
+    <table class="table col-sm-6 mr-4">
       <%= render 'restaurant/homes/show', restaurant: @restaurant %>
     </table>
     <%= form_with model: @reservation, url:restaurant_reservations_path do |f| %>
@@ -9,7 +9,7 @@
     <%= f.hidden_field :customer_id, :value => current_customer.id %>
     <%= f.hidden_field :approval_status, :value => "unapproved" %>
       <%= render 'layouts/errors', obj: @reservation %>
-      <table class="border">
+      <table class="border-less">
         <tr>
           <th style="width: 30%">氏名</th>
           <td><ruby><%= current_customer.name %><rt><%= current_customer.kana_name %></rt></ruby></td>

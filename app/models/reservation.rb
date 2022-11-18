@@ -6,7 +6,8 @@ class Reservation < ApplicationRecord
   #バリデーション
   validates :number_of_people, presence: true
   validates :reservation_time, presence: true
-  validate :start_check
+  validate :start_check, on: :create#会員側で予約するときのみ
+
   #現在より遅い時間に設定させる
   def start_check
     errors.add(:reservation_time, "は現在の日時より遅い時間を選択してください") if self.reservation_time < Time.now
@@ -29,15 +30,5 @@ class Reservation < ApplicationRecord
   end
 
   #飲食店側から承認を送ったとき
-  def approved_notification_reservation(current_restaurant, reservation_id, status)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and reservation_id = ? and action = ? ", customer_id, current_restaurant.id, reservation_id, status])
-    if temp.blank?
-      notification = current_restaurant.passive_notifications.new(
-        reservation_id: id,
-        visitor_id: customer_id,
-        action: status
-        )
-      notification.save if notification.valid?
-    end
-  end
+
 end

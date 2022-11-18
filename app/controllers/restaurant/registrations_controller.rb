@@ -60,6 +60,11 @@ class Restaurant::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
+  #飲食店のサインアップ後はマイページへ
+  def after_sign_up_path_for(resource)
+    restaurant_root_path
+  end
+
   def update
     @restaurant = current_restaurant
     @restaurant.update(restaurant_params)

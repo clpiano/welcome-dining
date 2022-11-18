@@ -13,8 +13,12 @@
         <%= simple_format(@post.content) %>
         <%#リンク%>
         <%= Rinku.auto_link(@post.link, :all, 'target="_blank"').html_safe %>
-        <%#ジャンル%>
-        <%= @post.restaurant.genre %>
+        <%#予約ステータス%>
+        <% if @post.reservation_status == true %>
+          <p class="text-success text-center">予約受付中</p>
+        <% else %>
+          <p class="text-muted text-center">予約停止中</p>
+        <% end %>
       </div>
       <font class="text-right" size="2">
         <%= @post.created_at.strftime('%Y/%m/%d %H:%M') %>
@@ -23,6 +27,6 @@
   </div>
   <div class="row justify-content-center">
     <%= link_to "編集する", edit_restaurant_post_path(@post), class:"btn btn-success m-3" %>
-    <%= link_to "削除する", restaurant_post_path(@post), method: :delete, class:"btn btn-danger m-3" %>
+    <%= link_to "削除する", restaurant_post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger m-3" %>
   </div>
 </div>

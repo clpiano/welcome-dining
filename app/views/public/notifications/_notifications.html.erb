@@ -1,12 +1,21 @@
+<%#いらんかも%>
 <% notifications.each do |notification| %>
 <% visited = notification.visited.name %>
   <div class="row justify-content-center">
+    <% if notification.reservation.approval_status == "approved" %>
     <span class="col-sm-5 my-2">
       <% case notification.action %>
       <%#飲食店から承認された場合%>
       <% when 'approved' then %>
         <%= visited %>
         の予約が承認されました
+      <% end %>
+    </span>
+    <span class="col-sm-2 my-2"><%= time_ago_in_words(notification.created_at) + "前" %></span>
+    <span class="col-sm-2 my-2"><%= link_to "確認する", restaurant_reservation_path(notification.visited, notification.reservation), class:"btn btn-primary" %></span>
+    <% elsif notification.reservation.approval_status == 'impossible' %>
+    <span class="col-sm-5 my-2">
+      <% case notification.action %>
       <%#飲食店から拒否された場合%>
       <% when 'impossible' then %>
         <%= visited %>
@@ -15,5 +24,7 @@
     </span>
     <span class="col-sm-2 my-2"><%= time_ago_in_words(notification.created_at) + "前" %></span>
     <span class="col-sm-2 my-2"><%= link_to "確認する", restaurant_reservation_path(notification.visited, notification.reservation), class:"btn btn-primary" %></span>
+    <% else %>
+    <% end %>
   </div>
 <% end %>

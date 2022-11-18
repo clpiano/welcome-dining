@@ -1,14 +1,14 @@
 class Public::CustomersController < ApplicationController
-
+  #いいね一覧
   def favorites
     favorites = Favorite.where(customer_id: current_customer.id).pluck(:post_id)
     @posts = Post.find(favorites)
   end
-
+  #マイページ
   def show
     @customer = current_customer
   end
-
+  #編集画面
   def edit
     @customer = current_customer
   end
@@ -22,6 +22,6 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:id, :last_name, :first_name, :zipcode, :address, :phone_number, :email, :password)
+    params.require(:customer).permit(:id, :name, :kana_name, :zipcode, :address, :phone_number, :email, :password)
   end
 end

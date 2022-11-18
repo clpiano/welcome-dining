@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :public do
     get 'relationships/followings'
   end
-  #顧客用
+  #会員用
   devise_for :customers, controllers: {
     registrations: "public/registrations",
     sessions: "public/sessions"
@@ -17,9 +17,10 @@ Rails.application.routes.draw do
     post 'customer/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  #顧客用
+  #会員用
   scope module: :public do
     root to: 'homes#top'
+    get '/about' => 'homes#about', as: 'about'
     get 'posts/search'
     resources :posts, only: [:index, :show] do
       resource :favorites, only: [:create, :destroy]
@@ -31,7 +32,7 @@ Rails.application.routes.draw do
     get 'customers/favorites' => 'customers#favorites', as: 'favorites'
     resources :customers, only: [:show, :edit, :update]
     resources :restaurants, only: [:index, :show] do
-      #飲食店名検索用
+      #飲食店名検索
       collection do
         get 'search'
       end
@@ -55,8 +56,7 @@ Rails.application.routes.draw do
     get 'reservations' => 'reservations#index', as: 'reserve'
     get 'reservation/:id' => 'reservations#show', as: 'reserve_detail'
     patch 'reservation/:id' => 'reservations#update', as: 'update_reservation'
-    resources :customers
     #通知一覧
-    resources :notifications, only: :index
+    resources :notifications, only: [:index]
   end
 end
