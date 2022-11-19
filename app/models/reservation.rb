@@ -28,7 +28,4 @@ class Reservation < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-
-  #飲食店側から承認を送ったとき
-
 end

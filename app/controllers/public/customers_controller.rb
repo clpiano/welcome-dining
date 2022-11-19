@@ -1,4 +1,7 @@
 class Public::CustomersController < ApplicationController
+  #ゲストの場合、編集画面にいこうとするとトップ画面へ遷移
+  before_action :ensure_guest_customer, only: [:edit]
+
   #いいね一覧
   def favorites
     favorites = Favorite.where(customer_id: current_customer.id).pluck(:post_id)
@@ -23,5 +26,11 @@ class Public::CustomersController < ApplicationController
 
   def customer_params
     params.require(:customer).permit(:id, :name, :kana_name, :zipcode, :address, :phone_number, :email, :password)
+  end
+
+  def ensure_guest_customer
+    if current_customer.email == 'guest@example.com'
+      redirect_to my_page_path, alert: "ゲストユーザーは編集できません"
+    end
   end
 end
