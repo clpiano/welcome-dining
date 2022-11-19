@@ -12,6 +12,8 @@ module WelcomeDining
     config.load_defaults 6.1
     #日本語化
     config.i18n.default_locale = :ja
+    #削除
+    config.paths.add 'lib', eager_load: true
 
     # Configuration for the application, engines, and railties goes here.
     #

@@ -1,7 +1,7 @@
 <div class="container">
   <h5 class="m-3">新規予約</h5>
   <div class="row">
-    <table class="table col-sm-6 mr-4">
+    <table class="table col-sm-6 mr-5">
       <%= render 'restaurant/homes/show', restaurant: @restaurant %>
     </table>
     <%= form_with model: @reservation, url:restaurant_reservations_path do |f| %>

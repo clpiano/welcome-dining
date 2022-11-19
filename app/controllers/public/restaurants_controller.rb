@@ -7,7 +7,7 @@ class Public::RestaurantsController < ApplicationController
   #飲食店詳細
   def show
     @restaurant = Restaurant.find(params[:id])
-    @posts = @restaurant.posts.all.order(created_at: :desc)
+    @posts = @restaurant.posts.all.order(created_at: :desc).limit(10)
   end
   #検索結果
   def search

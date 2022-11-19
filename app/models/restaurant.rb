@@ -8,12 +8,12 @@ class Restaurant < ApplicationRecord
   #バリデーション
   validates :name, presence: true
   validates :genre, presence: true
-  validates :zipcode, presence: true
+  validates :zipcode, presence: true, numericality: true, length: { minimum: 7, maximum: 7 }
   validates :address, presence: true
-  validates :phone_number, presence: true
+  validates :phone_number, presence: true, numericality: true, length: { minimum: 10, maximum: 13 }
   validates :start_time, presence: true
   validates :finish_time, presence: true
-  
+
   has_many :posts, dependent: :destroy
   has_many :reservations
   #会員にフォローされる

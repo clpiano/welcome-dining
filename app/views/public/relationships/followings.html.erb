@@ -3,8 +3,11 @@
   <div class="row justify-content-center">
     <% if @restaurants.exists? %>
       <%= render 'public/restaurants/index', restaurants: @restaurants %>
+    <% else %>
+      <p>フォローしている飲食店はありません</p>
     <% end %>
   </div>
+  <%#ページネーション%>
   <div class="row justify-content-center">
     <%= paginate @restaurants, theme: 'twitter-bootstrap-4' %>
   </div>

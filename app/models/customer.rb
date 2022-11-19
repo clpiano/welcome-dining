@@ -3,13 +3,13 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
   #バリデーション
   validates :name, presence: true
   validates :kana_name, presence: true
-  validates :zipcode, presence: true
+  validates :zipcode, presence: true, numericality: true, length: { minimum: 7, maximum: 7 }
   validates :address, presence: true
-  validates :phone_number, presence: true
+  validates :phone_number, presence: true, numericality: true, length: { minimum: 10, maximum: 13 }
   #予約機能
   has_many :reservations, dependent: :destroy
   #いいね機能

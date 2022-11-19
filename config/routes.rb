@@ -53,6 +53,7 @@ Rails.application.routes.draw do
     root to: 'homes#show'
     resources :homes, only: [:show]
     resources :posts
+    #予約
     get 'reservations' => 'reservations#index', as: 'reserve'
     get 'reservation/:id' => 'reservations#show', as: 'reserve_detail'
     patch 'reservation/:id' => 'reservations#update', as: 'update_reservation'
