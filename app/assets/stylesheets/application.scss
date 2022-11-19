@@ -13,21 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
-.row1 {
-  background-image: url(<%= asset_path 'welcome-dining.png' %>);
-  background-repeat: no-repeat;
-  background-position: center center;
-  height: 400px;
-  background-size: contain;
-  width: 100%;
-}
-
-.container-main {
-  background-image: url(<%= asset_path 'restaurant.jpg' %>);
-  background-repeat: no-repeat;
-  background-position: center center;
-  height: 600px;
-  background-size: cover;
-  width: 100%;
-}

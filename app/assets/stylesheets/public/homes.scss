@@ -1,3 +1,21 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.container-main {
+  background-image: image-url("restaurant.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 600px;
+  background-size: cover;
+  width: 100%;
+}
+
+.row1 {
+  background-image: image-url("welcome-dining.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 400px;
+  background-size: contain;
+  width: 100%;
+}
