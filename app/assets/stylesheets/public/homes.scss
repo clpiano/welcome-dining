@@ -3,10 +3,11 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .container-main {
-  background-image: image-url("restaurant.jpg");
+  background-image: image-url("restaurant2.jpg");
   background-repeat: no-repeat;
   background-position: center center;
-  height: 600px;
+  background-attachment: fixed;
+  height: 550px;
   background-size: cover;
   width: 100%;
 }
@@ -18,4 +19,36 @@
   height: 400px;
   background-size: contain;
   width: 100%;
+}
+
+.about {
+  background-image: image-url("restaurant.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+
+  background-size: cover;
+  width: 100%;
+}
+
+h3 {
+  text-align: center;
+}
+
+.bord1 {
+  background-image: image-url("reservation.png");
+  background-repeat: no-repeat;
+  height: 430px;
+  background-size: contain;
+  width: 100%;
+  margin-top: 0;
+}
+
+.bord2 {
+  background-image: image-url("caption.png");
+  background-repeat: no-repeat;
+  height: 430px;
+  background-size: contain;
+  width: 100%;
+  margin-top: 0;
 }
