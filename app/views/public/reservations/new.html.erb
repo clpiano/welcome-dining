@@ -29,7 +29,7 @@
         <tr>
           <th>予約時間</th>
           <td>
-            <%= Date.current.strftime('%Y/%m/%d') %><br>
+            <%= Date.current.strftime('%Y年%m月%d日') %><br>
             <%= f.time_select :reservation_time, :minute_step => 10 %>
           </td>
         </tr>

@@ -1,12 +1,27 @@
 <div class="container">
   <h5 class="m-3">通知一覧</h5>
   <div class="row justify-content-center">
-    <% if @notifications.exists? %>
-      <%= render 'notifications', notifications: @notifications %>
-    <% else %>
-      <p>通知はありません</p>
+    <% @notifications.each do |notification| %>
+    <% visitor = notification.visitor.name %>
+      <%#承認ステータスが未承認の場合表示%>
+      <% if notification.reservation.approval_status == "unapproved" %>
+        <span class="col-sm-5 my-2">
+          <% case notification.action %>
+          <% when 'reservation' then %>
+            <%= visitor %><%#予約リクエストを送信した会員名%>
+            様から予約リクエストを受信しました
+          <% end %>
+        </span>
+        <%#予約通知を受けた時間%>
+        <span class="col-sm-2 my-2"><%= time_ago_in_words(notification.created_at) + "前" %></span>
+        <%#予約詳細確認ボタン%>
+        <span class="col-sm-2 my-2"><%= link_to "確認する", restaurant_reserve_detail_path(notification.reservation), class:"btn btn-primary" %></span>
+      <% else %>
+        <%#未承認以外%>
+      <% end %>
     <% end %>
   </div>
+  <%#ページネーション%>
   <div class="row justify-content-center">
     <%= paginate @notifications, theme: 'twitter-bootstrap-4' %>
   </div>

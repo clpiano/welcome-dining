@@ -6,4 +6,10 @@ class Public::NotificationsController < ApplicationController
       notification.update(checked: true)
     end
   end
+  #通知
+  def destroy
+    @notification = Notification.find(params[:id])
+    @notification.destroy
+    redirect_to restaurant_reservation_path(@notification.visited, @notification.reservation)
+  end
 end

@@ -23,3 +23,6 @@
 - IDE：Cloud9
 
 ## 使用素材
+- 画像出典：「パブリックドメインQ：著作権フリー画像素材集」https://publicdomainq.net/
+- 画像出典：「ILLUST BOX イラストボックス」 https://www.illust-box.jp/
+- 画像出典：「バーチャル背景の素材集　V背景」 https://vbackground.com/

@@ -45,7 +45,7 @@ Rails.application.routes.draw do
     end
     get 'reservations' => 'reservations#index', as: 'reservations'
     #通知一覧
-    resources :notifications, only: [:index]
+    resources :notifications, only: [:index, :destroy]
   end
 
   #飲食店用

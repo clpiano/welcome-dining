@@ -1,24 +1,24 @@
 <div class="container">
   <h5 class="m-3">通知一覧</h5>
   <div class="row justify-content-center">
-    <% if @notifications.exists? %>
-      <% @notifications.each do |notification| %>
-      <% visited = notification.visited.name %>
-        <%#飲食店から承認された場合%>
-        <% if notification.reservation.approval_status == "approved" %>
-          <span class="col-sm-5 my-2"><%= visited %>の予約が承認されました</span>
-          <span class="col-sm-2 my-2"><%= time_ago_in_words(notification.created_at) + "前" %></span>
-          <span class="col-sm-2 my-2"><%= link_to "確認する", restaurant_reservation_path(notification.visited, notification.reservation), class:"btn btn-primary" %></span>
+    <% @notifications.each do |notification| %>
+    <% visited = notification.visited.name %><%#通知を送った飲食店名%>
+      <%#飲食店から承認された場合%>
+      <% if notification.reservation.approval_status == "approved" %>
+        <span class="col-sm-5 my-2"><%= visited %>の予約が承認されました</span>
+        <%#予約が承認された時間%>
+        <span class="col-sm-2 my-2"><%= time_ago_in_words(notification.reservation.updated_at) + "前" %></span>
+        <%#予約詳細のページへいくと同時に通知を削除%>
+        <span class="col-sm-2 my-2"><%= link_to "確認する", notification_path(notification), method: :delete, class:"btn btn-primary" %></span>
         <%#飲食店から拒否された場合%>
-        <% elsif notification.reservation.approval_status == "impossible" %>
-          <span class="col-sm-5 my-2"><%= visited %>の予約を承ることができませんでした</span>
-          <span class="col-sm-2 my-2"><%= time_ago_in_words(notification.created_at) + "前" %></span>
-          <span class="col-sm-2 my-2"><%= link_to "確認する", restaurant_reservation_path(notification.visited, notification.reservation), class:"btn btn-primary" %></span>
-        <% else %>
-        <% end %>
+      <% elsif notification.reservation.approval_status == "impossible" %>
+        <span class="col-sm-5 my-2"><%= visited %>の予約を承ることができませんでした</span>
+        <%#予約が拒否された時間%>
+        <span class="col-sm-2 my-2"><%= time_ago_in_words(notification.reservation.updated_at) + "前" %></span>
+        <%#予約詳細のページへいくと同時に通知を削除%>
+        <span class="col-sm-2 my-2"><%= link_to "確認する", notification_path(notification), method: :delete, class:"btn btn-primary" %></span>
+      <% else %>
       <% end %>
-    <% else %>
-      <p>通知はありません</p>
     <% end %>
   </div>
   <%#ページネーション%>

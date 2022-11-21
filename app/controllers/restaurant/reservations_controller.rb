@@ -7,7 +7,7 @@ class Restaurant::ReservationsController < ApplicationController
   def show
     @reservation = current_restaurant.reservations.find(params[:id])
   end
-
+  #承認ステータスの更新
   def update
     @reservation = current_restaurant.reservations.find(params[:id])
     @reservation.approval_status = params[:approval_status]
