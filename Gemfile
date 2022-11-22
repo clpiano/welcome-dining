@@ -69,6 +69,8 @@ gem 'ransack'
 gem 'rails-i18n'
 #自動削除
 gem 'whenever', require: false
+#非同期
+gem 'jquery-rails'
 #デプロイ
 gem 'dotenv-rails'
 group :production do

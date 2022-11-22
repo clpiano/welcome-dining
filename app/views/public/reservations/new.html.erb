@@ -2,12 +2,15 @@
   <h5 class="m-3">新規予約</h5>
   <div class="row justify-content-center">
     <table class="table col-sm-6 mr-5">
+      <%#飲食店の詳細%>
       <%= render 'restaurant/homes/show', restaurant: @restaurant %>
     </table>
     <%= form_with model: @reservation, url:restaurant_reservations_path do |f| %>
     <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
     <%= f.hidden_field :customer_id, :value => current_customer.id %>
+    <%#承認ステータスは未承認の状態%>
     <%= f.hidden_field :approval_status, :value => "unapproved" %>
+      <%#エラーメッセージ%>
       <%= render 'layouts/errors', obj: @reservation %>
       <table class="border-less">
         <tr>

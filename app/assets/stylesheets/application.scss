@@ -14,12 +14,21 @@
  *= require_self
  */
 
+//全体の背景
 body {
   background-image: image-url("dish.png");
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: bottom;
   background-attachment: fixed;
-  background-size: 65% auto;
+  background-size: 60% auto;
   width: 100%;
-  font-family: serif;
+}
+//ロゴ
+.logo_area {
+  width: 150px;
+}
+
+.logo {
+  height: 100%;
+  width: 100%;
 }

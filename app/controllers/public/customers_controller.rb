@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!
   #ゲストの場合、編集画面にいこうとするとトップ画面へ遷移
   before_action :ensure_guest_customer, only: [:edit]
 
@@ -21,6 +22,14 @@ class Public::CustomersController < ApplicationController
     @customer.update(customer_params)
     redirect_to my_page_path
   end
+  #アカウント削除確認画面
+  def unsubscribe
+  end
+
+  def destroy
+    current_customer.destroy
+    redirect_to root_path
+  end
 
   private
 
@@ -30,7 +39,7 @@ class Public::CustomersController < ApplicationController
 
   def ensure_guest_customer
     if current_customer.email == 'guest@example.com'
-      redirect_to my_page_path, alert: "ゲストユーザーは編集できません"
+      redirect_to my_page_path, alert: "ゲストユーザーはこの機能は使えません"
     end
   end
 end

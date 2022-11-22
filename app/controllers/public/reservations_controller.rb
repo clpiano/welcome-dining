@@ -1,4 +1,6 @@
 class Public::ReservationsController < ApplicationController
+  before_action :authenticate_customer!
+
   #新規予約
   def new
     @restaurant = Restaurant.find(params[:restaurant_id])

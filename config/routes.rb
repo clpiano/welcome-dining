@@ -28,6 +28,9 @@ Rails.application.routes.draw do
     get 'customers/my_page' => 'customers#show', as: 'my_page'
     get 'customers/information/edit' => 'customers#edit', as: 'edit_information'
     patch 'customers/information' => 'customers#update', as: 'update_information'
+    resource :customers, only: [:destroy]
+    #アカウント退会確認
+    get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     #いいね一覧
     get 'customers/favorites' => 'customers#favorites', as: 'favorites'
     resources :customers, only: [:show, :edit, :update]
@@ -52,7 +55,11 @@ Rails.application.routes.draw do
   namespace :restaurant do
     root to: 'homes#show'
     resources :homes, only: [:show]
-    resources :posts
+    resources :posts do
+      collection do
+        delete 'destroy_all'#投稿全て
+      end
+    end
     #予約
     get 'reservations' => 'reservations#index', as: 'reserve'
     get 'reservation/:id' => 'reservations#show', as: 'reserve_detail'

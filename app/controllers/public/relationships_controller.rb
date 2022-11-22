@@ -1,4 +1,6 @@
 class Public::RelationshipsController < ApplicationController
+  before_action :authenticate_customer!
+
   #フォローするとき
   def create
     current_customer.follow(params[:restaurant_id])

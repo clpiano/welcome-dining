@@ -1,4 +1,6 @@
 class Restaurant::PostsController < ApplicationController
+  before_action :authenticate_restaurant!
+
   #新規投稿画面
   def new
     @post = Post.new
@@ -37,6 +39,12 @@ class Restaurant::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.restaurant_id = current_restaurant.id
     @post.destroy
+    redirect_to restaurant_posts_path
+  end
+  #投稿全て削除
+  def destroy_all
+    @posts = current_restaurant.posts.all
+    @posts.destroy_all
     redirect_to restaurant_posts_path
   end
 

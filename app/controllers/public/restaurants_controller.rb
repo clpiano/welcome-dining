@@ -1,5 +1,8 @@
 class Public::RestaurantsController < ApplicationController
+  before_action :authenticate_customer!
+  #検索用
   before_action :set_q, only: [:index, :search]
+
   #飲食店一覧
   def index
     @restaurants = Restaurant.all.page(params[:page]).per(20)

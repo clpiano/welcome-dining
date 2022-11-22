@@ -1,4 +1,6 @@
 class Public::NotificationsController < ApplicationController
+  before_action :authenticate_customer!
+
   #会員側通知一覧
   def index
     @notifications = current_customer.active_notifications.page(params[:page]).per(20)

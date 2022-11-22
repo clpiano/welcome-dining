@@ -1,7 +1,8 @@
+<%#投稿一覧、いいね一覧、飲食店の詳細ページ%>
 <div class="post-index">
   <% posts.each do |post| %>
     <%= link_to post_path(post) do %>
-      <div class="card mb-2" style="width: 20rem;">
+      <div class="card mb-2" style="width: 20rem; background-color:#fffafa;"><%#snow%>
         <%#写真があれば表示%>
         <% if post.image.attached? %>
           <%= image_tag post.image, size: "150x150", class:"card-img-top" %>
@@ -14,7 +15,7 @@
           <%#リンク%>
           <%= Rinku.auto_link(post.link, :all, 'target="_blank"').html_safe %>
           <%#ジャンル%>
-          <p style="color:black;"><%= post.restaurant.genre %></p>
+          <p style="color:black;">#<%= post.restaurant.genre %></p>
           <%#予約ステータス%>
           <% if post.reservation_status == true %>
             <p class="text-success text-center">予約受付中</p>

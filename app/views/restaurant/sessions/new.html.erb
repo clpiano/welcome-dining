@@ -1,6 +1,9 @@
 <div class="container">
   <h5 class="m-4">飲食店ログイン</h5>
   <div class="row justify-content-center">
+    <%= alert %><%#エラーメッセージ%>
+  </div>
+  <div class="row justify-content-center">
     <%= form_with model: @restaurant, url: restaurant_session_path, method: :post do |f| %>
       <div class="form-group row m-2">
         <%= f.label :"E-mail", class:"col-sm-5" %>

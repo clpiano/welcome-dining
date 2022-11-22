@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>WelcomeDining</title>
-    <%#<meta name="viewport" content="width=device-width,initial-scale=1">%>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -15,9 +14,12 @@
   <body>
     <header class="sticky-top" style="background-color:#d2b48c;">
       <nav class="navbar navbar-expand-lg text-right navbar-light">
-        <a class="navbar-brand font-italic" style="color:black;" href="/">Welcome Dining</a>
+        <div class="logo_area"><%#トップへのリンク付きロゴ%>
+          <a class="navbar-brand" href="/"><%= image_tag 'logo.jpg', class:"logo" %></a>
+        </div>
+        <%#ハンバーガーメニュー%>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon "></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">

@@ -1,10 +1,18 @@
 <div class="container">
-  <h5 class="m-3">投稿一覧</h5>
+  <div class="row d-flex">
+    <h5 class="col-sm-3 m-3">投稿一覧</h5>
+    <%#投稿があれば、全削除ボタン表示%>
+    <% if @posts.exists? %>
+      <div class="col-sm-8 m-3 text-right">
+        <%= link_to "全投稿を削除する", destroy_all_restaurant_posts_path, method: :delete, "data-confirm" => "本当に全ての投稿を削除しますか？", class:"btn btn-danger" %>
+      </div>
+    <% end %>
+  </div>
   <div class="row justify-content-center">
     <div class="post-index">
       <% @posts.each do |post| %>
         <%= link_to restaurant_post_path(post) do %>
-          <div class="card mb-2" style="width: 20rem; background-color:#f0f8ff;">
+          <div class="card mb-2" style="width: 20rem; background-color:#fffafa;"><%#snow
             <%#写真があれば表示%>
             <% if post.image.attached? %>
               <%= image_tag post.image, size: "150x150", class:"card-img-top" %>

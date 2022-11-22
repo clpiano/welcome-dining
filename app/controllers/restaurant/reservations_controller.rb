@@ -1,4 +1,6 @@
 class Restaurant::ReservationsController < ApplicationController
+  before_action :authenticate_restaurant!
+
   #予約一覧
   def index
     @reservations = current_restaurant.reservations.all.order(created_at: :desc).page(params[:page]).per(20)

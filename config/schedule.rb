@@ -24,12 +24,6 @@ set :output, 'log/cron.log'
 set :environment, :development
 
 #毎日0時に投稿を自動削除
-#every 1.days, at: '0:00 am' do
- # runner 'Post.where("created_at < ?", 1.days.ago.beginning_of_day).destroy_all'
-#end
-
-every 1.days, at: '00:00 am' do
-  runner 'Reservation.where("created_at < ?", 1.days.ago.beginning_of_day).destroy_all'
-  #runner 'Notification.where("created_at < ?", 1.days.ago.beginning_of_day).destroy_all'
-  #runner 'Post.last.destroy'
+every 1.days, at: '0:00 am' do
+  runner 'Post.where("created_at < ?", 1.days.ago.beginning_of_day).destroy_all'
 end

@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_customer!
   before_action :set_search
   #会員用投稿一覧
   def index

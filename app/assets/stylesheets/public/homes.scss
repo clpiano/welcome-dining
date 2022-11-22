@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+//トップページ
 .container-main {
   background-image: image-url("restaurant2.jpg");
   background-repeat: no-repeat;
@@ -10,41 +11,39 @@
   height: 550px;
   background-size: cover;
   width: 100%;
-  padding-top: 50px;
 }
-
-.row1 {
+//トップページ看板
+.board {
   background-image: image-url("welcome-dining.png");
   background-repeat: no-repeat;
   background-position: center center;
-  height: 400px;
+  height: 380px;
   background-size: contain;
   width: 100%;
 }
-
+//アバウトページ
 .about {
   background-image: image-url("restaurant.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
-
   background-size: cover;
   width: 100%;
 }
-
+//アバウトページタイトル
 h3 {
   text-align: center;
 }
-
-.bord1 {
+//アバウトページ(予約の仕方)
+.blackboard1 {
   background-image: image-url("reservation.png");
   background-repeat: no-repeat;
   height: 430px;
   background-size: contain;
   width: 100%;
 }
-
-.bord2 {
+//アバウトページ(機能の説明)
+.blackboard2 {
   background-image: image-url("caption.png");
   background-repeat: no-repeat;
   height: 430px;
