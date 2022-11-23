@@ -1,17 +1,20 @@
 <div class="container">
   <h5 class="m-3">飲食店詳細</h5>
   <div class="row justify-content-center">
+    <%#飲食店の写真があれば表示%>
     <% if @restaurant.image.attached? %>
       <div class="col-sm-4 mt-3">
         <%= image_tag @restaurant.image, size: "320x320", class:"img-fluid" %>
       </div>
     <% end %>
     <table class="table col-sm-7">
+      <%#飲食店の詳細%>
       <%= render 'restaurant/homes/show', restaurant: @restaurant %>
     </table>
   </div>
   <%#フォローボタン%>
   <div class="row justify-content-center">
+    <%#フォローしてるか？%>
     <% if current_customer.following?(@restaurant) %>
       <%= link_to "フォロー外す", restaurant_relationships_path(@restaurant.id), method: :delete, class:"btn btn-danger" %>
     <% else %>
@@ -25,5 +28,9 @@
     <div class="post-index">
       <%= render 'public/posts/index', posts: @posts %>
     </div>
+  </div>
+  <%#ページネーション%>
+  <div class="row justify-content-center">
+    <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
   </div>
 </div>

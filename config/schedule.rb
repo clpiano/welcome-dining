@@ -21,7 +21,7 @@
 
 env :PATH, ENV['PATH']
 set :output, 'log/cron.log'
-set :environment, :development
+set :environment, :production
 
 #毎日0時に投稿を自動削除
 every 1.days, at: '0:00 am' do

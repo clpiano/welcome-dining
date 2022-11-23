@@ -8,7 +8,7 @@ class Post < ApplicationRecord
 
   #いいね機能
   has_many :favorites, dependent: :destroy
-
+  #いいねされてるかどうか？
   def favorited?(customer)
     favorites.where(customer_id: customer.id).exists?
   end

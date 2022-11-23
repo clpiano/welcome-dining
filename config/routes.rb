@@ -54,6 +54,7 @@ Rails.application.routes.draw do
   #飲食店用
   namespace :restaurant do
     root to: 'homes#show'
+    get '/attention' => 'homes#attention', as: 'attention'
     resources :homes, only: [:show]
     resources :posts do
       collection do

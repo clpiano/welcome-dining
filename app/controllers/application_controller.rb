@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-
+  
   #ログイン後
   def after_sign_in_path_for(resource)
     case resource
