@@ -5,5 +5,8 @@ class Restaurant::HomesController < ApplicationController
   def show
     @restaurant = current_restaurant
   end
+  #諸注意
+  def attention
+  end
 
 end
