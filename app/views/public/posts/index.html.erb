@@ -1,10 +1,11 @@
 <div class="container">
   <div class="row d-flex">
     <h5 class="col-sm-3 mt-3">投稿一覧</h5>
+    <%#キーワード検索フォーム%>
     <div class="col-sm-9 mt-3 text-right">
       <%= search_form_for @q, url:posts_search_path do |f| %>
         <%= f.label :restaurant, "キーワード検索" %>
-        <%= f.search_field :restaurant_name_or_restaurant_genre_or_restaurant_zipcode_or_restaurant_address_cont %>
+        <%= f.search_field :restaurant_name_or_restaurant_zipcode_or_restaurant_address_cont %>
         <%= f.submit '検索' %>
       <% end %>
     </div>

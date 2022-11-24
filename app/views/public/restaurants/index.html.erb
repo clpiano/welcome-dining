@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row d-flex">
-    <h5 class="col-sm-3 m-3">飲食店一覧</h5>
+    <h5 class="col-sm-3 my-3">飲食店一覧</h5>
     <%#飲食店検索フォーム%>
-    <div class="col-sm-8 m-3 text-right">
+    <div class="col-sm-9 my-3 text-right">
       <%= search_form_for @q, url: search_restaurants_path do |f| %>
         <%= f.label :name_or_genre_or_address, "キーワード検索" %>
         <%= f.search_field :name_or_genre_or_zipcode_or_address_cont %>
