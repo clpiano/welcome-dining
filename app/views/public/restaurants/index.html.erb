@@ -5,7 +5,7 @@
     <div class="col-sm-8 m-3 text-right">
       <%= search_form_for @q, url: search_restaurants_path do |f| %>
         <%= f.label :name_or_genre_or_address, "キーワード検索" %>
-        <%= f.search_field :name_or_genre_or_address_cont %>
+        <%= f.search_field :name_or_genre_or_zipcode_or_address_cont %>
         <%= f.submit '検索' %>
       <% end %>
     </div>
