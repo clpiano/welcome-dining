@@ -1,0 +1,22 @@
+<%#投稿一覧と検索結果%>
+<div class="text-right">
+  <button data-toggle="collapse" href="#collapse1" style="color:light;" class="btn btn-sm btn-dark">検索フォーム</button>
+</div>
+<div id="collapse1" class="panel-collapse collapse">
+  <%#キーワード検索フォーム%>
+  <div class="col-sm-12 mt-3 text-right">
+    <%= search_form_for q, url: posts_search_path do |f| %>
+      <%= f.label :restaurant, "キーワード検索" %>
+      <%= f.search_field :restaurant_name_or_restaurant_zipcode_or_restaurant_address_cont, placeholder:"店名、〒、住所を入力" %>
+      <%= f.submit '検索' %>
+    <% end %>
+  </div>
+  <%#絞り込み検索フォーム%>
+  <div class="col-sm-12 text-right">
+    <%= search_form_for q, url: posts_search_path do |f| %>
+      <%= f.label :"ジャンルで絞り込む" %>
+      <%= f.select :restaurant_genre_eq, [["カフェ・スイーツ"], ["和食"], ["洋食"], ["中華"], ["アジア・エスニック"], ["イタリアン"], ["カレー"], ["居酒屋・バー"],["その他"]], { include_blank: "選択してください"} %>
+      <%= f.submit '検索' %>
+    <% end %>
+  </div>
+</div>

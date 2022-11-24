@@ -1,8 +1,6 @@
-<div class="suv-nav text-center mx-3 my-1">
-  <%#ログイン中の会員名 %>
-  <div class="login customer_name ml-auto">
-    <%= current_customer.name %>さん
-  </div>
+<%#会員用ヘッダー%>
+<div class="suv-nav text-center mr-2 my-1">
+  <%= current_customer.name %>さん<%#ログイン中の会員名 %>
 </div>
 <li class="nav-item mr-2 my-1">
   <%= link_to "マイページ", my_page_path, class:"btn btn-sm btn-dark" %>

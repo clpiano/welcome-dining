@@ -1,3 +1,4 @@
+<%#ログアウト時のヘッダー%>
 <li class="nav-item mr-2 my-1">
   <%= link_to "ログイン", new_customer_session_path, class:"btn btn-sm btn-dark" %>
 </li>
@@ -7,4 +8,3 @@
 <li class="nav-item mr-2 my-1">
   <%= link_to "ゲストログイン（閲覧用）", customer_guest_sign_in_path, method: :post, class:"btn btn-sm btn-dark" %>
 </li>
-<%#= link_to "飲食店ログイン", new_restaurant_session_path %>

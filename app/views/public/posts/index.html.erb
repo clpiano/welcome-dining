@@ -1,25 +1,9 @@
 <div class="container">
-  <div class="row d-flex">
-    <h5 class="col-sm-3 mt-3">投稿一覧</h5>
-    <%#キーワード検索フォーム%>
-    <div class="col-sm-9 mt-3 text-right">
-      <%= search_form_for @q, url:posts_search_path do |f| %>
-        <%= f.label :restaurant, "キーワード検索" %>
-        <%= f.search_field :restaurant_name_or_restaurant_zipcode_or_restaurant_address_cont %>
-        <%= f.submit '検索' %>
-      <% end %>
-    </div>
-  </div>
-  <div class="row justify-content-end">
-    <%#絞り込み検索フォーム%>
-    <div class="col-sm-9 text-right">
-      <%= search_form_for @q, url:posts_search_path do |f| %>
-        <%= f.label :"ジャンルで絞り込む" %>
-        <%= f.select :restaurant_genre_eq, [["カフェ・スイーツ"], ["和食"], ["洋食"], ["中華"], ["アジア・エスニック"], ["イタリアン"], ["カレー"], ["居酒屋・バー"],["その他"]], { include_blank: "選択してください"} %>
-        <%= f.submit '検索' %>
-      <% end %>
-    </div>
-  </div>
+  <h5 class="mt-3">投稿一覧</h5>
+  <%#折り畳み検索フォーム%>  
+  <%= render 'search', q: @q %>
+  
+  <%#投稿一覧%>
   <div class="row justify-content-center">
     <%= render 'index', posts: @posts %>
   </div>

@@ -19,12 +19,12 @@
         </div>
         <%#ハンバーガーメニュー%>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon "></span>
+          <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
-              <%= render 'layouts/customer-header' %><%#顧客用ヘッダー%>
+              <%= render 'layouts/customer-header' %><%#会員用ヘッダー%>
             <% elsif restaurant_signed_in? %>
               <%= render 'layouts/restaurant-header' %><%#飲食店用ヘッダー%>
             <% else %>

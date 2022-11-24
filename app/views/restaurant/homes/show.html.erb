@@ -1,5 +1,5 @@
 <div class="container">
-  <h5 class="m-3">飲食店マイページ</h5>
+  <h5 class="m-3">マイページ</h5>
   <div class="row justify-content-center m-3">
     <%#写真があれば表示%>
     <% if @restaurant.image.attached? %>
@@ -8,6 +8,7 @@
       </div>
     <% end %>
     <table class="table col-sm-7">
+      <%#飲食店詳細%>
       <%= render 'show', restaurant: @restaurant %>
     </table>
   </div>

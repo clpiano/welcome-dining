@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   #会員用
   scope module: :public do
     root to: 'homes#top'
+    #Aboutページ
     get '/about' => 'homes#about', as: 'about'
     get 'posts/search'
     resources :posts, only: [:index, :show] do
@@ -54,6 +55,7 @@ Rails.application.routes.draw do
   #飲食店用
   namespace :restaurant do
     root to: 'homes#show'
+    #諸注意
     get '/attention' => 'homes#attention', as: 'attention'
     resources :homes, only: [:show]
     resources :posts do

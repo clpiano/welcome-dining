@@ -1,8 +1,6 @@
-<div class="suv-nav text-center mx-3 my-1">
-  <%#ログイン中の飲食店名 %>
-  <div class="login customer_name ml-auto">
-    <%= current_restaurant.name %>
-  </div>
+<%#飲食店用ヘッダー%>
+<div class="suv-nav text-center mr-2 my-1">
+  <%= current_restaurant.name %><%#ログイン中の飲食店名 %>
 </div>
 <li class="nav-item mr-2 my-1">
   <%= link_to '諸注意', restaurant_attention_path, class:"btn btn-sm btn-dark" %>
