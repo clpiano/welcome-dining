@@ -17,6 +17,10 @@
       <%= check_box_tag :confim %>
       <%= label_tag :confim, "予約一覧のステータスが「承認」になっている場合、予約した飲食店をご利用してから退会してください。" %>
     </div>
+    <div>
+      <%= check_box_tag :confim %>
+      <%= label_tag :confim, "退会後は現在ご使用のアカウントでログインができなくなります。もう一度登録することで再度利用できるようになります。" %>
+    </div>
   </div>
   <div class="row justify-content-center m-5">
     <%= link_to "退会", customers_path, method: :delete, "data-confirm" => "本当に退会しますか？", class:"btn btn-danger mr-3" %>
