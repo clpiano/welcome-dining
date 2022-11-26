@@ -1,5 +1,5 @@
 <div class="container">
-  <h5 class="m-3">飲食店詳細</h5>
+  <h5 class="mt-3">飲食店詳細</h5>
   <div class="row justify-content-center">
     <%#飲食店の写真があれば表示%>
     <% if @restaurant.image.attached? %>
@@ -22,7 +22,7 @@
     <% end %>
   </div>
 
-  <h5 class="m-3"><%= @restaurant.name %>の投稿一覧</h5>
+  <h5 class="mt-3"><%= @restaurant.name %>の投稿一覧</h5>
   <div class="row justify-content-center">
     <%#選択した飲食店の投稿一覧%>
     <div class="post-index">

@@ -3,6 +3,7 @@ class Post < ApplicationRecord
 
   belongs_to :restaurant
   has_one :reservation
+  
   #バリデーション
   validates :content, presence: true
 
@@ -12,5 +13,4 @@ class Post < ApplicationRecord
   def favorited?(customer)
     favorites.where(customer_id: customer.id).exists?
   end
-
 end

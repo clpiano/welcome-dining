@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row d-flex">
-    <h5 class="col-sm-3 m-3">投稿一覧</h5>
+    <h5 class="col-sm-3 mt-3">投稿一覧</h5>
     <%#投稿があれば、全削除ボタン表示%>
     <% if @posts.exists? %>
-      <div class="col-sm-8 m-3 text-right">
+      <div class="col-sm-9 my-3 text-right">
         <%= link_to "全投稿を削除する", destroy_all_restaurant_posts_path, method: :delete, "data-confirm" => "本当に全ての投稿を削除しますか？", class:"btn btn-danger" %>
       </div>
     <% end %>
