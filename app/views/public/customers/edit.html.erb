@@ -1,30 +1,30 @@
 <div class="container">
   <h5 class="mt-3">会員情報編集</h5>
   <div class="row justify-content-center">
-    <%= form_with model: @customer, url:my_page_path, method: :patch do |f| %>
+    <%= form_with model: @customer, url: my_page_path, method: :patch do |f| %>
       <div class="form-group row">
-        <%= f.label :氏名, class:"col-sm-5 text-right" %>
-        <%= f.text_field :name, class:"col-sm-7 form-control", placeholder:"山田太郎" %>
+        <%= f.label :氏名 %>
+        <%= f.text_field :name, class:"form-control", placeholder:"山田太郎" %>
       </div>
       <div class="form-group row">
-        <%= f.label :フリガナ, class:"col-sm-5 text-right" %>
-        <%= f.text_field :kana_name, class:"col-sm-7 form-control", placeholder:"ヤマダタロウ" %>
+        <%= f.label :フリガナ %>
+        <%= f.text_field :kana_name, class:"form-control", placeholder:"ヤマダタロウ" %>
       </div>
       <div class="form-group row">
-        <%= f.label :〒, class:"col-sm-5 text-right" %>
-        <%= f.text_field :zipcode, class:"col-sm-7 form-control", placeholder:"0000000" %>
+        <%= f.label :郵便番号 %>
+        <%= f.text_field :zipcode, class:"form-control", placeholder:"0000000" %>
       </div>
       <div class="form-group row">
-         <%= f.label :住所, class:"col-sm-5 text-right" %>
-         <%= f.text_field :address, class:"col-sm-7 form-control", placeholder:"東京都○○区○○町0-0" %>
+        <%= f.label :住所 %>
+        <%= f.text_field :address, class:"form-control", placeholder:"東京都○○区○○町１－１－１" %>
       </div>
       <div class="form-group row">
-        <%= f.label :TEL,"TEL", class:"col-sm-5 text-right" %>
-        <%= f.text_field :phone_number, class:"col-sm-7 form-control", placeholder:"0000000000" %>
+        <%= f.label :TEL,"TEL" %>
+        <%= f.text_field :phone_number, class:"form-control", placeholder:"0000000000" %>
       </div>
       <div class="form-group row">
-        <%= f.label :"E-mail", class:"col-sm-5 text-right" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-sm-7 form-control" %>
+        <%= f.label :"E-mail" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
       </div>
       <div class="actions text-center">
         <%= f.submit "編集", class:"btn btn-success m-3" %>
