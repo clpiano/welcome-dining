@@ -1,5 +1,5 @@
 <div class="container">
-  <h5 class="m-3">退会確認画面</h5>
+  <h5 class="mt-3">退会確認画面</h5>
   <div class="row justify-content-center" style="margin-bottom:3rem;">
     <strong>退会する前に、以下のチェック項目をご確認ください。</strong>
   </div>
@@ -7,7 +7,7 @@
     <%#チェック項目%>
     <div>
       <%= check_box_tag :confim %>
-      <%= label_tag :confim, "予約一覧のステータスが全て「来店済」、もしくは「不可」になっているかをご確認ください。" %>
+      <%= label_tag :confim, "予約一覧のステータスが全て「来店済」、もしくは「不可」になっていることをご確認ください。" %>
     </div>
     <div>
       <%= check_box_tag :confim %>
@@ -19,7 +19,11 @@
     </div>
     <div>
       <%= check_box_tag :confim %>
-      <%= label_tag :confim, "退会後は現在ご使用のアカウントでログインができなくなります。もう一度登録することで再度利用できるようになります。" %>
+      <%= label_tag :confim, "退会後は現在ご利用のアカウントでログインすることができなくなります。" %>
+    </div>
+    <div>
+      <%= check_box_tag :confim %>
+      <%= label_tag :confim, "退会後にもう一度登録することで再度利用できるようになります。" %>
     </div>
   </div>
   <div class="row justify-content-center m-5">
