@@ -3,6 +3,7 @@
   <div class="row justify-content-center">
     <table class="table col-sm-10">
       <thead>
+        <th>番号</th>
         <th>氏名</th>
         <th>予約人数</th>
         <th>予約時間</th>
@@ -12,6 +13,7 @@
       </thead>
       <% @reservations.each do |reservation| %>
         <tbody>
+          <td><%= reservation.id %></td>
           <td><%= reservation.customer.name %></td>
           <td><%= reservation.number_of_people %></td>
           <td><%= reservation.reservation_time.strftime('%Y/%m/%d %H:%M') %></td>

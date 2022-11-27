@@ -43,8 +43,11 @@ class Restaurant::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.restaurant_id = current_restaurant.id
-    @post.update(post_params)
-    redirect_to restaurant_post_path(@post)
+    if @post.update(post_params)
+      redirect_to restaurant_post_path(@post)
+    else
+      render "edit"
+    end
   end
 
   def destroy

@@ -2,6 +2,9 @@
   <h5 class="mt-3">投稿編集</h5>
   <div class="row justify-content-center">
     <%= form_with model: @post, url: restaurant_post_path(@post), method: :patch do |f| %>
+      <%#エラーメッセージ%>
+      <%= render 'layouts/errors', obj: @post %>
+
       <div class="form-group row">
         <%= f.label :投稿内容 %>
         <%= f.text_area :content, class:"form-control", size: "30x5" %>

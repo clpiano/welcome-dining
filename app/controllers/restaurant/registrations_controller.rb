@@ -67,8 +67,11 @@ class Restaurant::RegistrationsController < Devise::RegistrationsController
 
   def update
     @restaurant = current_restaurant
-    @restaurant.update(restaurant_params)
-    redirect_to restaurant_root_path
+    if @restaurant.update(restaurant_params)
+      redirect_to restaurant_root_path
+    else
+      render "edit"
+    end
   end
 
   private

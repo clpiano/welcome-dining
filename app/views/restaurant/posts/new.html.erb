@@ -4,6 +4,7 @@
     <%= form_with model: @post, url: restaurant_posts_path, local: true do |f| %>
     <%#エラーメッセージ%>
     <%= render 'layouts/errors', obj: @post %>
+      
       <div class="form-group row">
         <%= f.label :投稿内容 %>
         <%= f.text_area :content, class:"form-control", size: "30x5" %>

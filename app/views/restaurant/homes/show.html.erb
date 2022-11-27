@@ -3,8 +3,8 @@
   <div class="row justify-content-center m-3">
     <%#写真があれば表示%>
     <% if @restaurant.image.attached? %>
-      <div class="col-sm-4 mt-3">
-        <%= image_tag @restaurant.image, size:"320x320", class:"img-fluid" %>
+      <div class="col-sm-5 mt-3">
+        <%= image_tag @restaurant.image, size:"350x350", class:"img-fluid" %>
       </div>
     <% end %>
     <table class="table col-sm-7">
