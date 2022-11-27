@@ -5,7 +5,7 @@
       <%#飲食店の詳細%>
       <%= render 'restaurant/homes/show', restaurant: @restaurant %>
     </table>
-    <%= form_with model: @reservation, url:restaurant_reservations_path do |f| %>
+    <%= form_with model: @reservation, url: restaurant_reservations_path do |f| %>
     <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
     <%= f.hidden_field :customer_id, :value => current_customer.id %>
     <%#承認ステータスは未承認の状態%>
@@ -26,19 +26,19 @@
           <td><%= current_customer.phone_number %></td>
         </tr>
         <tr>
-          <th>予約人数</th>
+          <th height="50px">予約人数</th>
           <td><%= f.select :number_of_people, *[1..10] %>名</td>
         </tr>
         <tr>
-          <th>予約時間</th>
+          <th height="50px">予約時間</th>
           <td>
             <%= Date.current.strftime('%Y年%m月%d日') %><br>
             <%= f.time_select :reservation_time, :minute_step => 10 %>
           </td>
         </tr>
         <tr>
-          <th>備考</th>
-          <td><%= f.text_field :note, class:"form-control" %></td>
+          <th height="80px">備考</th>
+          <td><%= f.text_area :note, class:"form-control", placeholder:"例）禁煙席希望" %></td>
         </tr>
       </table>
       <div class="row justify-content-center">

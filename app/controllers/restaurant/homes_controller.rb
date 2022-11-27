@@ -8,5 +8,4 @@ class Restaurant::HomesController < ApplicationController
   #諸注意
   def attention
   end
-
 end

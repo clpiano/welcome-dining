@@ -2,6 +2,7 @@
   <h5 class="mt-3">会員新規登録</h5>
   <div class="row justify-content-center">
     <%= form_with model: @customer, url: customer_registration_path do |f| %>
+      <%#エラーメッセージ%>
       <%= render "public/shared/error_messages", resource: resource %>
 
         <div class="form-group row">
