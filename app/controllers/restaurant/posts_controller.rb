@@ -21,11 +21,23 @@ class Restaurant::PostsController < ApplicationController
   end
   #投稿詳細画面
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find_by(id: params[:id])
+    #投稿が見つからない場合、もしくは投稿がログイン中の飲食店のものではない場合
+    if @post.nil? || @post.restaurant != current_restaurant
+      redirect_to restaurant_posts_path
+    else
+      render "show"
+    end
   end
   #投稿編集画面
   def edit
-    @post = Post.find(params[:id])
+    @post = Post.find_by(id: params[:id])
+    #投稿が見つからなかった場合、もしくは投稿がログイン中の飲食店のものではない場合
+    if @post.nil? || @post.restaurant != current_restaurant
+      redirect_to restaurant_posts_path
+    else
+      render "edit"
+    end
   end
 
   def update

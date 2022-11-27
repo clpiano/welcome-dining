@@ -10,6 +10,11 @@
     <table class="table col-sm-7">
       <%#飲食店詳細%>
       <%= render 'show', restaurant: @restaurant %>
+      <%#飲食店のマイページのみ表示%>
+      <tr>
+        <th>フォロワー数</th>
+        <td><%= @restaurant.followers.count %></td>
+      </tr>
     </table>
   </div>
   <div class="row justify-content-center">

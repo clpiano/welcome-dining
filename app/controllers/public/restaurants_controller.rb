@@ -9,8 +9,12 @@ class Public::RestaurantsController < ApplicationController
   end
   #飲食店詳細
   def show
-    @restaurant = Restaurant.find(params[:id])
-    @posts = @restaurant.posts.all.order(updated_at: :desc).page(params[:page]).per(20)
+    @restaurant = Restaurant.find_by(id: params[:id])
+    if @restaurant.nil?
+      redirect_to restaurants_path
+    else
+      @posts = @restaurant.posts.all.order(updated_at: :desc).page(params[:page]).per(20)
+    end
   end
   #検索結果
   def search

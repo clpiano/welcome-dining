@@ -16,12 +16,12 @@ class Restaurant < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :reservations
-  
+
   #会員にフォローされる
-  has_many :reverse_of_relationships, class_name: "Relationships", foreign_key: "followed_id", dependent: :destroy
-  #フォロー一覧画面
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  #フォロワー
   has_many :followers, through: :reverse_of_relationships, source: :follower
-  
+
   #通知機能
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 end

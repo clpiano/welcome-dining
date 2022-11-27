@@ -7,7 +7,13 @@ class Restaurant::ReservationsController < ApplicationController
   end
   #予約詳細
   def show
-    @reservation = current_restaurant.reservations.find(params[:id])
+    @reservation = current_restaurant.reservations.find_by(id: params[:id])
+    #予約が見つからない場合、もしくは予約がログイン中の飲食店のものではない場合
+    if @reservation.nil? || @reservation.restaurant != current_restaurant
+      redirect_to restaurant_reserve_path
+    else
+      render "show"
+    end
   end
   #承認ステータスの更新
   def update

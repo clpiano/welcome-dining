@@ -23,11 +23,15 @@
   </div>
 
   <h5 class="mt-3"><%= @restaurant.name %>の投稿一覧</h5>
-  <div class="row justify-content-center">
-    <%#選択した飲食店の投稿一覧%>
-    <div class="post-index">
-      <%= render 'public/posts/index', posts: @posts %>
-    </div>
+  <div class="row justify-content-center mb-4">
+    <% if @restaurant.posts.exists? %>
+      <%#選択した飲食店の投稿一覧%>
+      <div class="post-index">
+        <%= render 'public/posts/index', posts: @posts %>
+      </div>
+    <% else %>
+      投稿はありません
+    <% end %>
   </div>
   <%#ページネーション%>
   <div class="row justify-content-center">

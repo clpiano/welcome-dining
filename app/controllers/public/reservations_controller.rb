@@ -20,7 +20,13 @@ class Public::ReservationsController < ApplicationController
   end
   #予約詳細
   def show
-    @reservation = current_customer.reservations.find(params[:id])
+    @reservation = current_customer.reservations.find_by(id: params[:id])
+    #予約が見つからない場合、もしくは予約がログイン中の会員のものではない場合
+    if @reservation.nil? || @reservation.customer != current_customer
+      redirect_to reservations_path
+    else
+      "show"
+    end
   end
   #予約一覧
   def index

@@ -3,13 +3,19 @@ class Public::PostsController < ApplicationController
   #検索用
   before_action :set_search
 
-  #会員用投稿一覧
+  #投稿一覧
   def index
     @posts = Post.all.order(updated_at: :desc).page(params[:page]).per(20)
   end
-  #会員用詳細ページ
+  #投稿詳細
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find_by(id: params[:id])
+    #投稿が見つからない場合
+    if @post.nil?
+      redirect_to posts_path
+    else
+      "show"
+    end
   end
 
   private
