@@ -3,8 +3,12 @@ class Public::ReservationsController < ApplicationController
 
   #新規予約
   def new
-    @restaurant = Restaurant.find(params[:restaurant_id])
-    @reservation = Reservation.new
+    @restaurant = Restaurant.find_by(id: params[:restaurant_id])
+    if @restaurant.nil?
+      redirect_to posts_path
+    else
+      @reservation = Reservation.new
+    end
   end
   #予約作成
   def create

@@ -9,7 +9,7 @@
 Restaurant.create!(
   name: 'まくらパスタ',
   email: 'makura@mail',
-  password: 'makura',
+  password: ENV["SEED_PASSWORD"],
   genre: '洋食',
   zipcode: '1234567',
   address: '神奈川県○○市○○町１－２－３',
