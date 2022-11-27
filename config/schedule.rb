@@ -24,6 +24,10 @@ set :output, 'log/cron.log'
 set :environment, :production
 
 #毎日0時に投稿を自動削除
-every 1.days, at: '01:15 am' do
+#every 1.days, at: '01:15 am' do
+ # runner 'Post.where("created_at < ?", 1.days.ago.beginning_of_day).destroy_all'
+#end
+
+every 3.minute do
   runner 'Post.where("created_at < ?", 1.days.ago.beginning_of_day).destroy_all'
 end
