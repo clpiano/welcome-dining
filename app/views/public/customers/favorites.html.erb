@@ -3,4 +3,8 @@
   <div class="row justify-content-center">
     <%= render 'public/posts/index', posts: @posts %>
   </div>
+  <%#ページネーション%>
+  <div class="row justify-content-center">
+    <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
+  </div>
 </div>

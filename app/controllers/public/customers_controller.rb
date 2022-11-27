@@ -3,10 +3,10 @@ class Public::CustomersController < ApplicationController
   #ゲストの場合、編集画面にいこうとするとトップ画面へ遷移
   before_action :ensure_guest_customer, only: [:edit]
 
-  #いいね一覧
+  #お気に入り一覧
   def favorites
     favorites = Favorite.where(customer_id: current_customer.id).pluck(:post_id)
-    @posts = Post.find(favorites)
+    @posts = Post.where(id: favorites).order(updated_at: :desc).page(params[:page]).per(10)
   end
   #マイページ
   def show

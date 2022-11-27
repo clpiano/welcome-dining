@@ -1,5 +1,7 @@
 class Public::ReservationsController < ApplicationController
   before_action :authenticate_customer!
+  #飲食店の最新予約ステータスを確認
+  before_action :check_restaurant_status!, only: [:new, :create]
 
   #新規予約
   def new
@@ -47,5 +49,13 @@ class Public::ReservationsController < ApplicationController
 
   def reservation_params
     params.require(:reservation).permit(:customer_id, :restaurant_id, :number_of_people, :reservation_time, :note, :approval_status)
+  end
+
+  def check_restaurant_status!
+    restaurant = Restaurant.find_by(id: params[:restaurant_id])
+    #飲食店が投稿していない場合、もしくは最後にあげた投稿の予約ステータスが予約停止中
+    if !restaurant.posts.any? || restaurant.posts.last.reservation_status == false
+      redirect_to posts_path
+    end
   end
 end

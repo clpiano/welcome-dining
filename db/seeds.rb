@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Restaurant.create!(
-  name: 'まくらパスタ',
-  email: 'makura@mail',
+  name: 'ジョイパスタ',
+  email: 'pasuta@mail',
   password: ENV["SEED_PASSWORD"],
   genre: '洋食',
   zipcode: '1234567',
