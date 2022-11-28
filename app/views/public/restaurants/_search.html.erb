@@ -15,7 +15,7 @@
   <div class="col-sm-12 text-right">
     <%= search_form_for q, url: search_restaurants_path do |f| %>
       <%= f.label :"ジャンルで絞り込む" %>
-      <%= f.select :genre_eq, [["カフェ・スイーツ"], ["和食"], ["洋食"], ["中華"], ["アジア・エスニック"], ["イタリアン"], ["カレー"], ["居酒屋・バー"],["その他"]], { include_blank: "選択してください"} %>
+      <%= f.select :genre_eq, [["カフェ・スイーツ"], ["和食"], ["洋食"], ["中華"], ["アジア・エスニック"], ["イタリアン"], ["カレー"], ["焼肉"], ["居酒屋・バー"],["その他"]], { include_blank: "選択してください"} %>
       <%= f.submit '検索' %>
     <% end %>
   </div>
