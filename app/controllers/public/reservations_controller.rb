@@ -49,7 +49,7 @@ class Public::ReservationsController < ApplicationController
 
   def check_restaurant_status!
     restaurant = Restaurant.find_by(id: params[:restaurant_id])
-    #飲食店が存在していない場合、もしくは投稿していない場合、もしくは最後にあげた投稿の予約ステータスが予約停止中
+    #飲食店が存在していない場合、もしくは投稿していない場合、もしくは最後にあげた投稿の予約ステータスが予約停止中の場合
     if restaurant.nil? || !restaurant.posts.any? || restaurant.posts.last.reservation_status == false
       redirect_to posts_path
     end
