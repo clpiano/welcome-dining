@@ -9,9 +9,21 @@ class Reservation < ApplicationRecord
   validates :number_of_people, presence: true
   validates :reservation_time, presence: true
   validate :start_check, on: :create#会員側で予約するときのみ
+  validate :start_time_check, on: :create
+  #validate :finish_time_check, on: :create
+
+
   #現在より遅い時間に設定させる
   def start_check
     errors.add(:reservation_time, "は現在の日時より遅い時間を選択してください") if self.reservation_time < Time.now
+  end
+  #飲食店の営業開始時間より遅い時間に設定させる
+  def start_time_check
+    errors.add(:reservation_time, "は飲食店の営業開始時間より遅い時間を選択してください") if self.reservation_time < restaurant.start_time
+  end
+
+  def finish_time_check
+    errors.add(:reservation_time, "は飲食店の営業終了時間より早い時間を選択してください") if self.reservation_time < restaurant.finish_time
   end
 
   #通知機能
