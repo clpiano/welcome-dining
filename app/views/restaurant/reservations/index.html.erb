@@ -13,13 +13,16 @@
       </thead>
       <% @reservations.each do |reservation| %>
         <tbody>
-          <td><%= reservation.id %></td>
-          <td><%= reservation.customer.name %></td>
-          <td><%= reservation.number_of_people %></td>
-          <td><%= reservation.reservation_time.strftime('%Y/%m/%d %H:%M') %></td>
-          <td><%= reservation.approval_status_i18n %></td>
-          <td><%= reservation.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-          <td><%= link_to "詳細", restaurant_reserve_detail_path(reservation) %></td>
+          <%#行全体をリンクにする%>
+          <tr class="index" onclick='window.location="<%= restaurant_reserve_detail_path(reservation) %>"' role="link">
+            <td><%= reservation.id %></td>
+            <td><%= reservation.customer.name %></td>
+            <td><%= reservation.number_of_people %></td>
+            <td><%= reservation.reservation_time.strftime('%Y/%m/%d %H:%M') %></td>
+            <td><%= reservation.approval_status_i18n %></td>
+            <td><%= reservation.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+            <td><%= link_to "詳細", restaurant_reserve_detail_path(reservation) %></td>
+          </tr>
         </tbody>
       <% end %>
     </table>

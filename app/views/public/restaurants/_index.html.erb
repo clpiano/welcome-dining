@@ -6,12 +6,13 @@
       <th>住所</th>
       <th>ジャンル</th>
       <th>営業時間</th>
-      <th>詳細ページ</th>
+      <th>詳細</th>
     </tr>
   </thead>
   <% restaurants.each do |restaurant| %>
     <tbody>
-      <tr>
+      <%#行全体をリンクにする%>
+      <tr class="index" onclick='window.location="<%= restaurant_path(restaurant) %>"' role="link">
         <td><%= restaurant.name %></td>
         <td><%= restaurant.address %></td>
         <td><%= restaurant.genre %></td>

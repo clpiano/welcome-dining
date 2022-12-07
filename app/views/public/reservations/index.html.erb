@@ -13,12 +13,14 @@
         </thead>
         <% @reservations.each do |reservation| %>
           <tbody>
-            <td><%= reservation.restaurant.name %></td>
-            <td><%= reservation.number_of_people %></td>
-            <td><%= reservation.reservation_time.strftime('%Y/%m/%d %H:%M') %></td>
-            <td><%= reservation.approval_status_i18n %></td>
-            <td><%= reservation.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-            <td><%= link_to "詳細", restaurant_reservation_path(reservation.restaurant, reservation) %></td>
+            <tr class="index" onclick='window.location="<%= restaurant_reservation_path(reservation.restaurant, reservation) %>"' role="link">
+              <td><%= reservation.restaurant.name %></td>
+              <td><%= reservation.number_of_people %></td>
+              <td><%= reservation.reservation_time.strftime('%Y/%m/%d %H:%M') %></td>
+              <td><%= reservation.approval_status_i18n %></td>
+              <td><%= reservation.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+              <td><%= link_to "詳細", restaurant_reservation_path(reservation.restaurant, reservation) %></td>
+            </tr>
           </tbody>
         <% end %>
       </table>
