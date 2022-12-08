@@ -4,9 +4,9 @@
     <tr>
       <th>店名</th>
       <th>住所</th>
+      <th></th>
       <th>ジャンル</th>
       <th>営業時間</th>
-      <th>詳細</th>
     </tr>
   </thead>
   <% restaurants.each do |restaurant| %>
@@ -14,10 +14,10 @@
       <%#行全体をリンクにする%>
       <tr class="index" onclick='window.location="<%= restaurant_path(restaurant) %>"' role="link">
         <td><%= restaurant.name %></td>
+        <td>〒<%= restaurant.zipcode %></td>
         <td><%= restaurant.address %></td>
         <td><%= restaurant.genre %></td>
         <td><%= restaurant.start_time.strftime('%H:%M') %>～<%= restaurant.finish_time.strftime('%H:%M') %></td>
-        <td><%= link_to "詳細", restaurant_path(restaurant) %></td>
       </tr>
     </tbody>
   <% end %>
