@@ -1,0 +1,37 @@
+<%#飲食店の予約一覧と検索結果%>
+<div class="row justify-content-center">
+  <div class="col-sm-12 text-right">
+    <%= search_form_for q, url: restaurant_sort_status_path do |f| %>
+      <%= f.label :"ステータスで絞り込み" %>
+      <%= f.select :approval_status_eq, [["未承認", 0], ["承認済", 1], ["不可", 2], ["来店済", 3]], { include_blank: "選択してください"} %>
+      <%= f.submit '検索' %>
+    <% end %>
+  </div>
+  <table class="table col-sm-10">
+    <thead>
+      <th>番号</th>
+      <th>氏名</th>
+      <th>予約人数</th>
+      <th>予約時間</th>
+      <th>ステータス</th>
+      <th>予約を受けた日時</th>
+    </thead>
+    <% reservations.each do |reservation| %>
+      <tbody>
+        <%#行全体をリンクにする%>
+        <tr class="index" onclick='window.location="<%= restaurant_reserve_detail_path(reservation) %>"' role="link">
+          <td><%= reservation.id %></td>
+          <td><%= reservation.customer.name %></td>
+          <td><%= reservation.number_of_people %></td>
+          <td><%= reservation.reservation_time.strftime('%Y/%m/%d %H:%M') %></td>
+          <td><%= reservation.approval_status_i18n %></td>
+          <td><%= reservation.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+</div>
+<%#ページネーション%>
+<div class="row justify-content-center mb-5">
+  <%= paginate reservations, theme: 'twitter-bootstrap-4' %>
+</div>

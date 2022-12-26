@@ -1,5 +1,7 @@
 class Restaurant::ReservationsController < ApplicationController
   before_action :authenticate_restaurant!
+  #検索用
+  before_action :set_search
 
   #予約一覧
   def index
@@ -27,5 +29,10 @@ class Restaurant::ReservationsController < ApplicationController
 
   def reservation_params
     params.require(:reservation).permit(:restaurant_id, :customer_id, :number_of_people, :reservation_time, :approval_status)
+  end
+  #ステータスで絞り込み検索
+  def set_search
+    @q = Reservation.ransack(params[:q])
+    @reservations = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(20)
   end
 end

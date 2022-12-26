@@ -65,6 +65,7 @@ Rails.application.routes.draw do
     end
     #予約
     get 'reservations' => 'reservations#index', as: 'reserve'
+    get 'reservations/search/sort_status', to: 'reservations#search', as: 'sort_status'
     get 'reservation/:id' => 'reservations#show', as: 'reserve_detail'
     patch 'reservation/:id' => 'reservations#update', as: 'update_reservation'
     #通知一覧
